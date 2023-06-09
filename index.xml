@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>关于 on 虚幻引擎资料整理🏆</title>
+    <link>http://example.org/</link>
+    <description>Recent content in 关于 on 虚幻引擎资料整理🏆</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>操作题</title>
+      <link>http://example.org/docs/interview/operation/op1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/interview/operation/op1/</guid>
+      <description>1、联网操作（蓝图或C++）#收录时间
+2022年11月12日
+基于虚幻引擎网络框架完成
+2人练机抢夺物品游戏，要求如下：#场景：一个带有门空房间，房间外有2个桌子 两名玩家联机，有开门动作，跑到一个屋子里面抢夺物品。 屋子里地面上有5个小物品 （可以超过五个，随机） 玩家随机拾取地面上的物品，放到屋外的桌子上 判断2人，谁搬运的物品更多，弹窗提示哪个玩家胜利 完成时间：1-2天内，提交作品视频
+扩展此问题（非面试要求）#游戏启动等待其他玩家加入，等待时长30秒 如超过30秒未有玩家加入，游戏结束。 玩家加入后必须在30秒内随机选择阵营颜色（游戏最多进入4人，颜色为红，黄，蓝，绿） 玩家可以输入昵称 如出现玩家未选择原色，未选择昵称，则系统随机分配颜色，并分配昵称。原则是，颜色不能重复，昵称不能重复。 根据玩家数量，生成对应颜色的球（位置随机在场景中），每个玩家生成5个球. 生成彩色球，彩色球5个，每个计分2份 对应颜色玩家可以拾取对应颜色的球，并且可以拾取彩色球。例如红色玩家可以拾取红色球或是彩色球，不能拾取其他颜色球。 将球放置到对应颜色的桌子。基础色球每个记1份，彩色球每个记2分。 每人每次只能拾取一个球。 彩色球可以放置到自己颜色桌子（自己加分），或是放置到其他颜色桌子（其他人加分） 游戏中可以随时查看游戏玩家积分情况 游戏胜利条件#积分模式：场上任意一种颜色球被拾取完毕，并且彩色球被抢夺完毕 计时模式：倒计时60秒，取分数最高的玩家胜利 注意胜利需要弹出胜利窗口，失败玩家提示再接再厉，并告知胜利者是谁
+2、本地图片读取（蓝图或C++）#收录时间
+2022年11月12日读取本地图片（任意二十张图片）； umg中两种展示方式可任意切换； 展示方式一：九宫图，一页九张，切换至最后一页不足九张顺位开头n张补齐。点击任意一张皆可全屏显示。 展示方式二：轮播模式，一排三张，中间为大图预览，两边为小图预览，同时作为上下张翻页按钮，点击左侧小图三张图均切换为当前图片的上一张，点击右侧反之。点击中间大图全屏显示。 3、UMG测试（蓝图或C++）#收录时间
+2022年11月12日
+引擎版本4.27+
+umg树形结构：层级要求四级以上；一级管理者三到四个，二级管理者1~9人，三级管理者（0~9），四级以上（0~9）（需有一组体现出0） 推荐使用UMG TreeView。 员工模型（可用基础模型示意），同一类别（部门，下文中类别同义）用同种模型示意，职级大小用模型缩放示意。 员工模型上方显示两个字段，分别为职位、姓名。 不同类别站不同区域，同一级别站同一行。 点击umg列表中员工，与之对应的员工模型及职位姓名变色，其他未被此次点击的员工还原。 建议UMG列表与员工模型为自动生成（通过配置表）。使用TreeView
+参考示例#There should have been a video here but your browser does not seemto support it.</description>
+    </item>
+    
+    <item>
+      <title>SCS服务器</title>
+      <link>http://example.org/docs/chatserver/scsproto/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/chatserver/scsproto/</guid>
+      <description>Simple Chat Server#文档说明
+目前适用版本1.0
+服务器基于C#完成设计
+协议文档只适用于SCS服务器
+说明#一款简单的基于UDP/IP协议完成的聊天通信服务器。不限定客户端类型，通信消息格式采用UTF-8纯文本，未做协议加密压缩等。
+协议消息均采用JSON格式，方便学习练习。
+服务器未作复杂校验，未做过多容错操作。可能存在BUG，测试中需要注意线程死锁，或是线程崩溃问题。关于线程调度已经进行优化，尽量保证不不出现线程锁问题。未适用线程池，故不适合超过100用户量链接。
+服务器通信协议采用HTTP和SOCKET，其中HTTP只是用POST
+关于公网部署，可根据自身网络环境进行调整，不做说明。
+协议名词#标记 说明 上行 表明从客户端向服务器端发送消息 下行 表明从服务器端向客户端发送消息 ID 每个协议都应该带有的字段，并且字段值在协议中唯一存在 通信类型 一般指Socket或是HTTP通信 协议结构#本服务器协议结构采用JSON方式通信，如更换协议结构可只替换协议层不用更换协议内容。
+JSON结构为外层对象型，内层字段
+{&amp;quot;id&amp;quot; : &amp;quot;&amp;quot;,...}协议表述（客户端上行）#消息通过HTTP的POST传递
+注册账号#字段 类型 说明 id int 1000 account string password string 服务器注册账号
+登录账号#字段 类型 说明 id int 1001 account string password string 服务器登录账号
+以下协议通过SOCKET通信
+校验换取TOKEN#当链接Chat服务器后，需要在1分钟内校验TOKEN并换取新的TOKEN，否则将会被踢下线。暂未增加IP访问冷静期限制。</description>
+    </item>
+    
+    <item>
+      <title>常见问题</title>
+      <link>http://example.org/docs/interview/qa/basequestion/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/interview/qa/basequestion/</guid>
+      <description>常见问题整理#本序列问题会不停更新
+所有内容均来自真实面试企业提问，收集内容为开放式问答，需要自行整理答案，切记发散知识，不要只关注问题的表面！C++语言#cpp中动态库和静态库区别
+cpp中指针是不是数据结构
+cpp中定义常量使用宏还是const
+简单阐述下你认为运算符重载的意义
+阐述下设计模式中单例模式的意义
+说一说你使用过得版本控制工具，描述下使用中的问题
+cpp中，友元的优点和缺点
+面相对象的特性
+面相对象的设计原则 六个
+阐述下智能指针的实现手段和意义
+说出你认识的设计模式，阐述他们的特点，不少于五个
+针对接口编程的意义
+数组指针和指针数组区别
+指针数组加减一是否有意义？为什么？
+cpp中头文件的意义
+内联函数的意义
+虚函数实现，虚函数表
+虚继承相关知识了解（菱形继承）
+指针和引用的区别
+★ 相同点:
+都是地址的概念;指针指向一块内存，它的内容是所指内存的地址;引用是某块内存的别名。 ★ 区别:
+指针是一个实体，而引用仅是个别名; 引用使用时无需解引用(*)，指针需要解引用; 引用只能在定义时被初始化一次，之后不可变;指针可变; 引用没有 const，指针有 const; 引用不能为空，指针可以为空; “sizeof 引用”得到的是所指向的变量(对象)的大小，而“sizeof 指针”得到的是指针本身(所指向的变量或对象的地址)的大小; 指针和引用的自增(++)运算意义不一样; 从内存分配上看:程序为指针变量分配内存区域，而引用不需要分配内存区域。 进程和线程的区别
+共用体是什么？
+C++中的多态是什么？
+C++11特性列举一些
+nullptr和NULL的区别
+宏编写逻辑体和使用函数的区别
+手写设计模式
+main函数执行前后做了什么？
+main函数为什么要返回数据整型
+C++在普通平台的差异一般有哪些？简单说一下
+结构体中添加函数，在内存中如何分配？
+虚幻引擎#ue中，正向是坐标系中的哪个轴
+在场景中创建actor的方法
+向蓝图暴露变量的宏是哪个？
+ue中如何创建uobject对象
+阐述下gamemode在ue框架中的意义
+如何使用charactermovement飞行？
+fstring,fname,ftext的使用场景举例下
+CDO class default object
+算法相关#阐述下二分查找法的时间复杂度是什么？ 数据结构中栈和队列区别 动态规划 数组排序 正态分布 排序算法 二叉树 红黑树 平衡二叉树 散列（算法特性和应用（容器map，stl模板库vector）） 手写链表并完成反转 数据结构#斐波那契数列 链表是什么？手写单向链表和双向链表 如何确定环形链表的头 数组和vector的区别 什么是堆 什么是栈 用C++完成设计栈 3D数学#点乘叉乘意义 欧拉角的优缺点 </description>
+    </item>
+    
+    <item>
+      <title>整理带答案</title>
+      <link>http://example.org/docs/interview/qa/qha/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/interview/qa/qha/</guid>
+      <description>常见问题进行梳理带答案#以下为某同学将常见问题整理后，预留答案并分享1、点乘叉乘意义#点乘： 按照说法是向量a在b向量上的投影。 一般根据点乘来判断是否是垂直（0），两向量的相似度(夹角越小，越相似）等；但我在使用中更多是进行反三角计算角度。
+叉乘： 按照说法是a，b向量叉乘得到的新向量C垂直于a，b向量所在的平面，如果为0，说明两向量是平行的。 一般我用于计算法线向量。
+2、ue中，正向是坐标系中的哪个轴#UE4的X轴是前方。 UE4中，Rotation的X是翻滚角Roll,围绕X轴旋转。Y是俯仰角pitch，围绕Y轴旋转。Z当然是偏航角yaw了，围绕Z轴。
+3、在场景中创建actor的方法#使用SpawnActor方法根据类生成Actor
+4、向蓝图暴露变量的宏是哪个？#EditAnywhere： 表示此属性可以通过属性窗口，原型和实例进行编辑（原型指的是类模板，实例指的是具体的对象实例）
+BlueprintReadWrite： 设置属性为蓝图读写。会在蓝图脚本中为被修饰的变量提供 Get 和 Set 方法
+5、ue中如何创建uobject对象#调用 NewObject() 函数来创建 UObject 对象
+6、阐述下gamemode在ue框架中的意义#一个游戏世界的mode，规则，逻辑。 游戏的规则,包括玩家如何加入游戏,能否暂停游戏,地图切换,胜利的条件等.一般一个Level下只有一个GameMode.在多玩家游戏中,GameMode仅存于服务器端.
+主要功能有： Class登记、 游戏内实体的Spawn、 游戏的进度、 Level的切换、 多人游戏的步调同步
+7、如何使用charactermovement飞行？#Character 的 setMovementMode 设置flying
+8、fstring,fname,ftext的使用场景举例下#FName： FName这个字符串类是用来给某个东西命名（Name）的，也就是说作为一个东西的ID。这里说的东西可以是编辑器Content浏览窗口里看到的各种资源，可以是动态材质实例里的某个可设置的参数，还可以是模型骨架中某个具体的骨骼，以及比如角色mesh里用来attach武器的socket。 当FName对象创建时，会根据字符串内容计算出一个hash值，并根据这个hash值把原始的字符串存到一张hash表里。FName对象里会记录自己所在的hash表的索引值，这样在实现比较逻辑时，它就不需要比较字符串内容，而是直接比较索引值是否相等。另外FName对象为不可变对象（immutable），即它被创建后就不能被修改了。它的这种只读属性使得它是天然的线程安全的。 需要注意的是FName是不区分大小写的。
+FText： 在你的游戏中玩家所能见到的文本都应该用FText来做，比如在UI上的文本显示。总而言之，假如你希望利用这个实验性的功能来方便的实现多语言支持，那么就用FText。
+FString： 它创建后是可修改的（mutable）。它提供大量操作字符串的方法，比如将字符串倒序，获取某个子串等。在你的程序内部，做比如拼装一个URL等逻辑时就会用到它。需要注意的是，因为它的可修改特性，它对性能不是那么的友好，另外在线程间共享时需要很注意。
+9、cpp中动态库和静态库区别#二者的不同点在于代码被载入的时刻不同。
+静态库在程序编译时会被连接到目标代码中，程序运行时将不再需要该静态库，因此体积较大。 动态库在程序编译时并不会被连接到目标代码中，而是在程序运行是才被载入，因此在程序运行时还需要动态库存在，因此代码体积较小。 动态库的好处是，不同的应用程序如果调用相同的库，那么在内存里只需要有一份该共享库的实例。
+10、cpp中指针是不是数据结构#不是</description>
+    </item>
+    
+    <item>
+      <title>某公司笔试（1）</title>
+      <link>http://example.org/docs/interview/written/dl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/interview/written/dl/</guid>
+      <description>笔试题操作题#注意
+下面试题为某虚拟仿真公司真实面试题，招聘岗位虚幻引擎开发工程师
+注意题目中内容不一定正确，需要重新整理
+收录时间：2022年8月10日</description>
+    </item>
+    
+    <item>
+      <title>某公司笔试（10）</title>
+      <link>http://example.org/docs/interview/written/nc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/interview/written/nc/</guid>
+      <description>请写出输出结果______(4 分) #include &amp;lt;stdio.h&amp;gt; union { int i; char x[2]; } void main() { a.x[0] = 10; a.x[1] = 1; printf(&amp;#34;%d&amp;#34;, a.i); } int Func(int，int); 不可与下列哪个函数构成重载 (______________)(4分) A.int Func(int, int, int); B.double Func(int, double); C.double Func(double, double); D.double Func(int, int); this 指针存在的目的是 () (4分) A.保证基类公有成员在子类中可以被访问 B.保证基类私有成员在子类中可以被访问 C.保证基类保护成员在子类中可以被访问 D.保证每个对象拥有自己的数据成员，但共享处理这些数据成员的代码 在哪种派生方式中，派生类可以访问基类中的 protected 成员 (_) (4 分) A.protected 和 private B.public 和private C.摞代ubli狡疤孩和 protected D.仅protected 以下两条输出语句分别输出什么? (8 分) float a = 1.0f; float b = 0.</description>
+    </item>
+    
+    <item>
+      <title>某公司笔试（2）</title>
+      <link>http://example.org/docs/interview/written/gamegou/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/interview/written/gamegou/</guid>
+      <description>北京游戏公司笔试题#注意
+北京某游戏公司招聘面试笔试题
+收录时间：2022年8月10日
+100 个小朋友围成一个圈，设定编号为 1~100，依次按 1、2、3、4、5、6、7、8、9 循 环报数，报到 9 的出圈，直到所有小朋友出圈。请写代码打印出各个小朋友出圈顺序，语言 不限
+商场新进了两种商品 A 和 B，现在有 A 和 B 商品的购买记录，例如 A=[1,2,2,3,4,5], B=[2,4,1,2,3]。1,2,3,4,5 为用户编号。现在需要求出购买过 A、B 两种商品的用户，语言不限。 （结果中的每个用户编号必须是唯一的）
+例：
+Input:
+1,2,2,3,4,5
+2,4,1,2,3
+output:
+1,2,3,4</description>
+    </item>
+    
+    <item>
+      <title>某公司笔试（3）</title>
+      <link>http://example.org/docs/interview/written/zy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/interview/written/zy/</guid>
+      <description>北京某公司笔试题#注意
+公司为北京游戏公司招聘虚幻引擎开发工程师
+注意题目中内容不一定正确，需要重新整理
+收录时间：2022年1月25日</description>
+    </item>
+    
+    <item>
+      <title>某公司笔试（4）</title>
+      <link>http://example.org/docs/interview/written/gx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/interview/written/gx/</guid>
+      <description>北京某公司笔试题#注意
+公司为某公司招聘C++开发工程师
+收录时间：2021年8月15日</description>
+    </item>
+    
+    <item>
+      <title>某公司笔试（5）</title>
+      <link>http://example.org/docs/interview/written/zl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/interview/written/zl/</guid>
+      <description>某游戏公司笔试题#注意
+游戏公司C++开发工程师
+答案仅供参考，需要自行校验对错
+收录时间：2021年8月15日</description>
+    </item>
+    
+    <item>
+      <title>某公司笔试（6）</title>
+      <link>http://example.org/docs/interview/written/yh/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/interview/written/yh/</guid>
+      <description>某游戏公司笔试题#注意
+游戏公司C++开发工程师
+答案仅供参考，需要自行校验对错</description>
+    </item>
+    
+    <item>
+      <title>某公司笔试（7）</title>
+      <link>http://example.org/docs/interview/written/hx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/interview/written/hx/</guid>
+      <description>UE4研发工程师笔试题(30min)#遍历删除一个 List 中的第偶数个元素.请写出伪代码 请简述字节流和字符流的区别和用途 单例类如何确保线程安全? 静态库和动态库有何区别? 请简述线程间进行数据传递的方法 请简述进程间进行数据传递的方法 请简述骨骼动画的概念 欧拉角的作用是什么?请简述欧拉角/四元数/旋转矩阵之间的关系和优劣 Unity默认是 y-up 坐标系，而UE4是z-up 的.给定UE4 中一个骨骼的欧拉角，如何转换到Unity 中? 您是否有在 UE4 中使用多线程的经验? 请简述功能和实现方式 UE4 的网络框架是如何同步的? 如何将 Camera 实时渲染图片并存本地文件? 请大略表述思路 和服务器通信时，你会依据哪些因素选取通信协议? 选用TCP/Http/Websocket 的场景分别是? </description>
+    </item>
+    
+    <item>
+      <title>某公司笔试（8）</title>
+      <link>http://example.org/docs/interview/written/rt/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/interview/written/rt/</guid>
+      <description>一、选择题（每题3分，10题，共30分）#某32位系统下，下面两个sizeof的结果分别是？（ A ） char str1[] = “http://www.nd.com.cn/”; sizeof（str1）; void Foo（char str2[100]） { sizeof（str2）; }; A. 4、4 B. 22、100 C. 22、4 D. 4、100 C++编译器区分重载函数的可能方式中，不能作为依据的是（D） A. 参数个数 B. 参数类型 C. 函数名 D. 函数返回值类型 设栈最大长度为3，入栈序列为1.2.3.4.5.6，则不可能得出栈序列是？（ D ） A．1.2.3.4.5.6 B．2.1.3.4.5.6 C．3.4.2.1.5.6 D．4.3.2.1.5.6 对于派生类的构造函数，在定义对象时构造函数的执行顺序为？1．成员对象的构造函数2．基类的构造函数3．派生类本身的构造函数（ D ） A．123 B．231 C．321 D．213 如何减少换页错误？（ B ） A. 进程倾向于占用CPU B. 访问局部性（locality of reference）满足进程要求 C. 进程倾向于占用I/O D. 使用基于最短剩余时间（shortest remaining time）的调度机制 foo.GetI（）的值是？（ C ） class Foo { public: Foo（int i） : m_i（i） {} Foo（） { Foo（1） } int GetI（void） { return m_i; } private: int m_i; }; Foo foo; A．0 B．-1 C．1 D．不可预知 下列程序的输出结果是？（ C ） int i = 8; switch（i） { case 9: i = i+1; default: i = i+1; case 10: i = i+1; case 11: i = i+1; } cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; endl; A．9 B．10 C．11 D．12 float a=2，b=4，h=3;以下C语言表达式与代数式计算结果不相符的是？（ B ） A.</description>
+    </item>
+    
+    <item>
+      <title>某公司笔试（9）</title>
+      <link>http://example.org/docs/interview/written/cpp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/interview/written/cpp/</guid>
+      <description>C++基础#一、选择题#在C++中，数组类型属于（） A.本数据类型 B.自定义数琳类型 C.类类型 D.结构体类型 若有语句:float array[3][5][7];则数组array 的元素个数为() A.3 B.5 C.7 D.105 关于析构函数，下面说法不正确的是() A.析构函数用来完成对象被删除前的一些清理工作 B.析构函数可以声明为重载函数 C.析构函数可以声明为虚函数 D.析构函数在对象的生存期即将结束时被系统自动调用 关于抽象类，下列说法不正确的是() A.抽象类不能实例化 B.带有虚函数的类称为抽象类 C.带有纯虚函数的类称为抽象类 D.抽象类的作用是为一个类族建立一个公共接口 下列对一维数组a的正确定义是() A.int n=5,a[n]; B.int a(5); C.const int n-5;int a[n]; D.int n;cin&amp;raquo;n;int a[n]; 下列数组定义语句中，不合法的是() A.int a[3]={0,1,2,3}; B.int a[]={0,1,2}; C.int a[3]={0,1,2}; D.int a[3]={0}; 己知int a[10]={0，1，2，3，4，5，6，7，8，9}和*p=a，则不能表示数组a中元素的式子是()。 A.*a B.*p C.a D.a[p-a] 已知char *a[]={&amp;ldquo;fortraan&amp;rdquo;, &amp;ldquo;basic&amp;rdquo;, &amp;ldquo;pascal&amp;rdquo;, &amp;ldquo;java&amp;rdquo;, &amp;ldquo;c++&amp;quot;}，则cout&amp;laquo;a[3]，的显示结果是（） A.basie B.paseal C.java D.javact+ 若用数组名作为调用函数的实参，则传递给形参的是() A.数组存储首地址 B.数组第一个元素的值 C.数组元素的个数 D.数组中全部元素的值 判字符串sl和s2是否相等的正确表达式是（） A.</description>
+    </item>
+    
+    <item>
+      <title>零散整理</title>
+      <link>http://example.org/docs/interview/qa/anyone/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/interview/qa/anyone/</guid>
+      <description>内容来自面试回顾#本序列问题会不停更新
+以下内容为一些面试后的回顾总结，可能会有少许偏差！收集（一）#GameplayAbility 是什么? 通常用于处理什么? 如果需要应用一个持续时间内提高20%最大生命并不可叠加，要如何设置? GameplayEffect在执行时可以同时激活它所携带的能力么? Gameplay Effe ctExecutionCalculation它的功能是什么，它在什么情况下可能执行? GameplayEffect中的AssetTag 和 GeneratedTag 分别表示什么 如果需要某一个GameplayEffect免疫某一种状态，要如何处理 如果需要在执行GE前应用自定义属性，要如何处理 你认为GameplayAbility用于物品的应用，有哪些优点和缺点 如果设置某技能带有冷却和消耗的能力。 GameplayCue是什么，用它来处理什么。 如何发送GameplayEvent GameplayAttributeset是什么，可以在这里处理哪些逻辑。 当受到伤害时，20%几率对目标造成受到伤書的50%，要如何处理 收集（二）#面试北京某游戏公司后将问题进行整理总结
+简单聊一下GamePlay框架 比如新建一个地图，然后你再编辑器里运行起来，生成一个角色，编辑器做了一个什么事情，是怎么让这个程序跑起来的 你的角色换装是怎么做的 买的模型怎么保证他的骨骼是一致的呢 你做的这个模型大概有多少根骨骼呢 动画里播一个角度声音，衰减声音怎么做 动画播放到某一帧我想运行一个特效该怎么做 简单讲一讲UE的行为树结构 比如说有一个NPC有几种Idle动画，如何在行为树里边随机播一个（非U++） 简单讲一讲虚幻的RPC网络架构 讲一讲C++11里边Lambda表达式怎么用 讲一讲auto关键字吧，什么时候在auto后边加个*，什么时候在auto后边加个引用 讲一讲UE里边常用的数据结构有哪些 讲一讲TArray和C++STL里边的vector容器有什么区别 编程过程中有哪些崩溃让你记忆犹新，怎么解决的 讲一讲C++中常见的代码崩溃（数据操作） 收集（三）#同样面试游戏公司的面试题整理比较多
+用过虚幻4?你虚幻里面主要用C++还是蓝图进行开发？ C++和蓝图优势在哪里体现？ 多人团队开发协作用什么软件? 虚幻项目中能用SVN和GIT吗? 用过perforce吗？ Perforce做什么的？ 为什么用perforce？ 对C++有什么了解吗？C++和JAVA，VB这些有什么区别呢？ 和JAVA比有哪些优势? 怎么理解C++中的虚函数？ 虚函数在内存方面是重载还是覆盖？ 子类里拥有父类的内存空间吗？ 说说C++中结构体和类的区别是什么？ 虚幻当中的结构体和正常C++中的结构体有没有区别？ 在虚幻里面用C++里面的指针转换会有什么隐患？ 在一个类中有三个变量是int类型那么这个类所占的内存多大？ 全局变量会存在哪个地方？ 如果const一个全局变量会存在哪个地方？ 你能说一下栈在程序里面有什么作用？ C++11比原生C++多了些啥？ Lambda是什么? 仿函数是C++11的新特性吗 谈谈你对类的方法后面加不加Override有什么理解？ 谈谈final和override的区别？ 用没用过automic?</description>
+    </item>
+    
+  </channel>
+</rss>

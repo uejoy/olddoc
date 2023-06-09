@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="请写出输出结果______(4 分) #include &lt;stdio.h&gt; union { int i; char x[2]; } void main() { a.x[0] = 10; a.x[1] = 1; printf(&#34;%d&#34;, a.i); } int Func(int，int); 不可与下列哪个函数构成重载 (______________)(4分) A.int Func(int, int, int); B.double Func(int, double); C.double Func(double, double); D.double Func(int, int); this 指针存在的目的是 () (4分) A.保证基类公有成员在子类中可以被访问 B.保证基类私有成员在子类中可以被访问 C.保证基类保护成员在子类中可以被访问 D.保证每个对象拥有自己的数据成员，但共享处理这些数据成员的代码 在哪种派生方式中，派生类可以访问基类中的 protected 成员 (_) (4 分) A.protected 和 private B.public 和private C.摞代ubli狡疤孩和 protected D.仅protected 以下两条输出语句分别输出什么? (8 分) float a = 1.0f; float b = 0.">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="某公司笔试（10）" />
+<meta property="og:description" content="请写出输出结果______(4 分) #include &lt;stdio.h&gt; union { int i; char x[2]; } void main() { a.x[0] = 10; a.x[1] = 1; printf(&#34;%d&#34;, a.i); } int Func(int，int); 不可与下列哪个函数构成重载 (______________)(4分) A.int Func(int, int, int); B.double Func(int, double); C.double Func(double, double); D.double Func(int, int); this 指针存在的目的是 () (4分) A.保证基类公有成员在子类中可以被访问 B.保证基类私有成员在子类中可以被访问 C.保证基类保护成员在子类中可以被访问 D.保证每个对象拥有自己的数据成员，但共享处理这些数据成员的代码 在哪种派生方式中，派生类可以访问基类中的 protected 成员 (_) (4 分) A.protected 和 private B.public 和private C.摞代ubli狡疤孩和 protected D.仅protected 以下两条输出语句分别输出什么? (8 分) float a = 1.0f; float b = 0." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/docs/interview/written/nc/" /><meta property="article:section" content="docs" />
+
+
+
+<title>某公司笔试（10） | 虚幻引擎资料整理🏆</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.8e0348f3b41fafa0106f0457e7282e446af2abf421ecf9617e65d36305748ccf.css" integrity="sha256-jgNI87Qfr6AQbwRX5yguRGryq/Qh7PlhfmXTYwV0jM8=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.1057937f0dcc23977e027794aa6ebb81e1bee61ea3d0573b8c6e7438462a69c6.js" integrity="sha256-EFeTfw3MI5d&#43;AneUqm67geG&#43;5h6j0Fc7jG50OEYqacY=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?cd2548ec3e7fddf6e77bfef48762fbd4";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>虚幻引擎资料整理🏆</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>企业面试题</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fb675c8699e61fdda47a85ce174c4d27" class="toggle"  />
+    <label for="section-fb675c8699e61fdda47a85ce174c4d27" class="flex justify-between">
+      <a role="button" class="">问答题</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/qa/basequestion/" class="">常见问题</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/qa/qha/" class="">整理带答案</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/qa/anyone/" class="">零散整理</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f23b051264b0e3f88e34022c158433f4" class="toggle" checked />
+    <label for="section-f23b051264b0e3f88e34022c158433f4" class="flex justify-between">
+      <a role="button" class="">笔试题</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/dl/" class="">某公司笔试（1）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/nc/" class="active">某公司笔试（10）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/gamegou/" class="">某公司笔试（2）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/zy/" class="">某公司笔试（3）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/gx/" class="">某公司笔试（4）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/zl/" class="">某公司笔试（5）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/yh/" class="">某公司笔试（6）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/hx/" class="">某公司笔试（7）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/rt/" class="">某公司笔试（8）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/cpp/" class="">某公司笔试（9）</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c34f1a03e6c6a01b68314c39b2d1e99b" class="toggle"  />
+    <label for="section-c34f1a03e6c6a01b68314c39b2d1e99b" class="flex justify-between">
+      <a role="button" class="">操作题</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/operation/op1/" class="">操作题</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>聊天服务器</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/chatserver/scsproto/" class="">SCS服务器</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://pome.cc"  target="_blank" rel="noopener">
+        🎁 Pome
+      </a>
+  </li>
+  
+  <li>
+    <a href="http://share.uejoy.com"  target="_blank" rel="noopener">
+        🍔网盘资源
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>某公司笔试（10）</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents"></nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><ol>
+<li>请写出输出结果______(4 分)</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">union</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> i;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> x[<span style="color:#ae81ff">2</span>];
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    a.x[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span>    a.x[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#e6db74">&#34;%d&#34;</span>, a.i);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="2">
+<li>int Func(int，int); 不可与下列哪个函数构成重载 (______________)(4分)</li>
+</ol>
+<ul>
+<li>A.int Func(int, int, int);</li>
+<li>B.double Func(int, double);</li>
+<li>C.double Func(double, double);</li>
+<li>D.double Func(int, int);</li>
+</ul>
+<ol start="3">
+<li>this 指针存在的目的是 () (4分)</li>
+</ol>
+<ul>
+<li>A.保证基类公有成员在子类中可以被访问</li>
+<li>B.保证基类私有成员在子类中可以被访问</li>
+<li>C.保证基类保护成员在子类中可以被访问</li>
+<li>D.保证每个对象拥有自己的数据成员，但共享处理这些数据成员的代码</li>
+</ul>
+<ol start="4">
+<li>在哪种派生方式中，派生类可以访问基类中的 protected 成员 (_) (4 分)</li>
+</ol>
+<ul>
+<li>A.protected 和 private</li>
+<li>B.public 和private</li>
+<li>C.摞代ubli狡疤孩和 protected</li>
+<li>D.仅protected</li>
+</ul>
+<ol start="5">
+<li>以下两条输出语句分别输出什么? (8 分)</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">float</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0f</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">float</span> b <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0f</span>;
+</span></span></code></pre></div><ul>
+<li>A.cout &laquo; boolalpha &laquo; ( (int)a == (nt&amp;)a ) &laquo; endl;___________________________</li>
+<li>B.cout &laquo; boolalpha &laquo; ( (int)b == (int&amp;)b ) &laquo; endl;___________________________</li>
+</ul>
+<ol start="6">
+<li>输出下面程序的输出结果。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Sample</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    T n;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    Sample(T i)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        n <span style="color:#f92672">=</span> i;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">==</span>(Sample<span style="color:#f92672">&amp;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> Sample<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span><span style="color:#66d9ef">operator</span><span style="color:#f92672">==</span>(Sample<span style="color:#f92672">&amp;</span> s)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(n<span style="color:#f92672">==</span>s.n)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> l;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    Sample<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">double</span><span style="color:#f92672">&gt;</span> s1(<span style="color:#ae81ff">2.5</span>)<span style="color:#960050;background-color:#1e0010">，</span>s2(<span style="color:#ae81ff">2.5</span>);
+</span></span><span style="display:flex;"><span>    cout<span style="color:#f92672">&lt;&lt;</span><span style="color:#e6db74">&#34;s1与 s2 的数据成员&#34;</span><span style="color:#f92672">&lt;&lt;</span>(sl<span style="color:#f92672">==</span>s2 <span style="color:#f92672">?</span><span style="color:#e6db74">&#34;相等&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;不相等&#34;</span>)<span style="color:#f92672">&lt;&lt;</span>endl;________________________________
+</span></span><span style="display:flex;"><span>    Sample<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> s3(<span style="color:#ae81ff">2</span>)<span style="color:#960050;background-color:#1e0010">，</span>s4(<span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>    cout<span style="color:#f92672">&lt;&lt;</span><span style="color:#e6db74">&#34;s3与s4 的数据成员&#34;</span><span style="color:#f92672">&lt;&lt;</span>(s3<span style="color:#f92672">==</span>s4<span style="color:#f92672">?</span><span style="color:#e6db74">&#34;相等&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;不相等&#34;</span>)<span style="color:#f92672">&lt;&lt;</span>endl;_________________________________
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="7">
+<li>以下三条输出语句分别输出什么?(9 分)</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">char</span> str1[] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abc&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">char</span> str2[] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abc&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> str3[] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abc&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> str4[] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abc&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> str5 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abc&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> str6 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abc&#34;</span>;
+</span></span></code></pre></div><ul>
+<li>A.cout &laquo; boolalpha &laquo;( strl==str2 ) &laquo; endl;____________</li>
+<li>B.cout &laquo; boolalpha &laquo;( str3==str4 ) &laquo; endl;____________</li>
+<li>C.cout &laquo; boolalpha &laquo;( str5==str6 )&laquo; endl;____________</li>
+</ul>
+<ol start="8">
+<li>检查ABCD 四个表达式的是否正确，著正确，写出经过表达式中 的值，老不正确，请写出原团(2 分)</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>;
+</span></span></code></pre></div><ul>
+<li>A.a += (a++);_________</li>
+<li>B.a += (++a);_________</li>
+<li>C.(a++)+=a;_________</li>
+<li>D.(++a)+=(a++);_________</li>
+</ul>
+<ol start="9">
+<li>
+<p>关键宇explicit 有什么作用?(4分)</p>
+</li>
+<li>
+<p>请写出输出结果:</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> a <span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">&#39;&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> b<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;*&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> argv[])
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> str[<span style="color:#ae81ff">31</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Sorry, what&#39;s your name again?&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> p <span style="color:#f92672">=</span> str <span style="color:#f92672">+</span> <span style="color:#66d9ef">sizeof</span>(str) <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span>q <span style="color:#f92672">=</span> p <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (str <span style="color:#f92672">!=</span> p<span style="color:#f92672">--</span>)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(a <span style="color:#f92672">==</span> <span style="color:#f92672">*</span>p)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span> l;p <span style="color:#f92672">+</span> i <span style="color:#f92672">!=</span> q; <span style="color:#f92672">++</span>i)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>(p <span style="color:#f92672">+</span> i);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            cout <span style="color:#f92672">&lt;&lt;</span> b;
+</span></span><span style="display:flex;"><span>            q <span style="color:#f92672">=</span> p;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(str <span style="color:#f92672">==</span> p)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; p <span style="color:#f92672">+</span> i <span style="color:#f92672">!=</span> q; <span style="color:#f92672">++</span>i)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>(p <span style="color:#f92672">+</span> i);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="11">
+<li>判断字符串是否为回纹（写出伪代码即可）</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">isSymmerty</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> p)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="12">
+<li>编程:如何判断一个单链表是否是环形链表?(7 分)(写出伪代码)</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">node</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> val;
+</span></span><span style="display:flex;"><span>    node<span style="color:#f92672">*</span> next;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">check</span>(<span style="color:#66d9ef">const</span> node<span style="color:#f92672">*</span> head)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="13">
+<li>设计程序：A文件中有一组整数，要求使用冒泡排序后输出到另一个文件中(20分)</li>
+</ol>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents"></nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

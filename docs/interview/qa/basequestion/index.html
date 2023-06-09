@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="常见问题整理#本序列问题会不停更新
+所有内容均来自真实面试企业提问，收集内容为开放式问答，需要自行整理答案，切记发散知识，不要只关注问题的表面！C&#43;&#43;语言#cpp中动态库和静态库区别
+cpp中指针是不是数据结构
+cpp中定义常量使用宏还是const
+简单阐述下你认为运算符重载的意义
+阐述下设计模式中单例模式的意义
+说一说你使用过得版本控制工具，描述下使用中的问题
+cpp中，友元的优点和缺点
+面相对象的特性
+面相对象的设计原则 六个
+阐述下智能指针的实现手段和意义
+说出你认识的设计模式，阐述他们的特点，不少于五个
+针对接口编程的意义
+数组指针和指针数组区别
+指针数组加减一是否有意义？为什么？
+cpp中头文件的意义
+内联函数的意义
+虚函数实现，虚函数表
+虚继承相关知识了解（菱形继承）
+指针和引用的区别
+★ 相同点:
+都是地址的概念;指针指向一块内存，它的内容是所指内存的地址;引用是某块内存的别名。 ★ 区别:
+指针是一个实体，而引用仅是个别名; 引用使用时无需解引用(*)，指针需要解引用; 引用只能在定义时被初始化一次，之后不可变;指针可变; 引用没有 const，指针有 const; 引用不能为空，指针可以为空; “sizeof 引用”得到的是所指向的变量(对象)的大小，而“sizeof 指针”得到的是指针本身(所指向的变量或对象的地址)的大小; 指针和引用的自增(&#43;&#43;)运算意义不一样; 从内存分配上看:程序为指针变量分配内存区域，而引用不需要分配内存区域。 进程和线程的区别
+共用体是什么？
+C&#43;&#43;中的多态是什么？
+C&#43;&#43;11特性列举一些
+nullptr和NULL的区别
+宏编写逻辑体和使用函数的区别
+手写设计模式
+main函数执行前后做了什么？
+main函数为什么要返回数据整型
+C&#43;&#43;在普通平台的差异一般有哪些？简单说一下
+结构体中添加函数，在内存中如何分配？
+虚幻引擎#ue中，正向是坐标系中的哪个轴
+在场景中创建actor的方法
+向蓝图暴露变量的宏是哪个？
+ue中如何创建uobject对象
+阐述下gamemode在ue框架中的意义
+如何使用charactermovement飞行？
+fstring,fname,ftext的使用场景举例下
+CDO class default object
+算法相关#阐述下二分查找法的时间复杂度是什么？ 数据结构中栈和队列区别 动态规划 数组排序 正态分布 排序算法 二叉树 红黑树 平衡二叉树 散列（算法特性和应用（容器map，stl模板库vector）） 手写链表并完成反转 数据结构#斐波那契数列 链表是什么？手写单向链表和双向链表 如何确定环形链表的头 数组和vector的区别 什么是堆 什么是栈 用C&#43;&#43;完成设计栈 3D数学#点乘叉乘意义 欧拉角的优缺点 ">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="常见问题" />
+<meta property="og:description" content="常见问题整理#本序列问题会不停更新
+所有内容均来自真实面试企业提问，收集内容为开放式问答，需要自行整理答案，切记发散知识，不要只关注问题的表面！C&#43;&#43;语言#cpp中动态库和静态库区别
+cpp中指针是不是数据结构
+cpp中定义常量使用宏还是const
+简单阐述下你认为运算符重载的意义
+阐述下设计模式中单例模式的意义
+说一说你使用过得版本控制工具，描述下使用中的问题
+cpp中，友元的优点和缺点
+面相对象的特性
+面相对象的设计原则 六个
+阐述下智能指针的实现手段和意义
+说出你认识的设计模式，阐述他们的特点，不少于五个
+针对接口编程的意义
+数组指针和指针数组区别
+指针数组加减一是否有意义？为什么？
+cpp中头文件的意义
+内联函数的意义
+虚函数实现，虚函数表
+虚继承相关知识了解（菱形继承）
+指针和引用的区别
+★ 相同点:
+都是地址的概念;指针指向一块内存，它的内容是所指内存的地址;引用是某块内存的别名。 ★ 区别:
+指针是一个实体，而引用仅是个别名; 引用使用时无需解引用(*)，指针需要解引用; 引用只能在定义时被初始化一次，之后不可变;指针可变; 引用没有 const，指针有 const; 引用不能为空，指针可以为空; “sizeof 引用”得到的是所指向的变量(对象)的大小，而“sizeof 指针”得到的是指针本身(所指向的变量或对象的地址)的大小; 指针和引用的自增(&#43;&#43;)运算意义不一样; 从内存分配上看:程序为指针变量分配内存区域，而引用不需要分配内存区域。 进程和线程的区别
+共用体是什么？
+C&#43;&#43;中的多态是什么？
+C&#43;&#43;11特性列举一些
+nullptr和NULL的区别
+宏编写逻辑体和使用函数的区别
+手写设计模式
+main函数执行前后做了什么？
+main函数为什么要返回数据整型
+C&#43;&#43;在普通平台的差异一般有哪些？简单说一下
+结构体中添加函数，在内存中如何分配？
+虚幻引擎#ue中，正向是坐标系中的哪个轴
+在场景中创建actor的方法
+向蓝图暴露变量的宏是哪个？
+ue中如何创建uobject对象
+阐述下gamemode在ue框架中的意义
+如何使用charactermovement飞行？
+fstring,fname,ftext的使用场景举例下
+CDO class default object
+算法相关#阐述下二分查找法的时间复杂度是什么？ 数据结构中栈和队列区别 动态规划 数组排序 正态分布 排序算法 二叉树 红黑树 平衡二叉树 散列（算法特性和应用（容器map，stl模板库vector）） 手写链表并完成反转 数据结构#斐波那契数列 链表是什么？手写单向链表和双向链表 如何确定环形链表的头 数组和vector的区别 什么是堆 什么是栈 用C&#43;&#43;完成设计栈 3D数学#点乘叉乘意义 欧拉角的优缺点 " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/docs/interview/qa/basequestion/" /><meta property="article:section" content="docs" />
+
+
+
+<title>常见问题 | 虚幻引擎资料整理🏆</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.8e0348f3b41fafa0106f0457e7282e446af2abf421ecf9617e65d36305748ccf.css" integrity="sha256-jgNI87Qfr6AQbwRX5yguRGryq/Qh7PlhfmXTYwV0jM8=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.1057937f0dcc23977e027794aa6ebb81e1bee61ea3d0573b8c6e7438462a69c6.js" integrity="sha256-EFeTfw3MI5d&#43;AneUqm67geG&#43;5h6j0Fc7jG50OEYqacY=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?cd2548ec3e7fddf6e77bfef48762fbd4";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>虚幻引擎资料整理🏆</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>企业面试题</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fb675c8699e61fdda47a85ce174c4d27" class="toggle" checked />
+    <label for="section-fb675c8699e61fdda47a85ce174c4d27" class="flex justify-between">
+      <a role="button" class="">问答题</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/qa/basequestion/" class="active">常见问题</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/qa/qha/" class="">整理带答案</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/qa/anyone/" class="">零散整理</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f23b051264b0e3f88e34022c158433f4" class="toggle"  />
+    <label for="section-f23b051264b0e3f88e34022c158433f4" class="flex justify-between">
+      <a role="button" class="">笔试题</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/dl/" class="">某公司笔试（1）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/nc/" class="">某公司笔试（10）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/gamegou/" class="">某公司笔试（2）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/zy/" class="">某公司笔试（3）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/gx/" class="">某公司笔试（4）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/zl/" class="">某公司笔试（5）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/yh/" class="">某公司笔试（6）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/hx/" class="">某公司笔试（7）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/rt/" class="">某公司笔试（8）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/cpp/" class="">某公司笔试（9）</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c34f1a03e6c6a01b68314c39b2d1e99b" class="toggle"  />
+    <label for="section-c34f1a03e6c6a01b68314c39b2d1e99b" class="flex justify-between">
+      <a role="button" class="">操作题</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/operation/op1/" class="">操作题</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>聊天服务器</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/chatserver/scsproto/" class="">SCS服务器</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://pome.cc"  target="_blank" rel="noopener">
+        🎁 Pome
+      </a>
+  </li>
+  
+  <li>
+    <a href="http://share.uejoy.com"  target="_blank" rel="noopener">
+        🍔网盘资源
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>常见问题</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#c语言">C++语言</a></li>
+    <li><a href="#虚幻引擎">虚幻引擎</a></li>
+    <li><a href="#算法相关">算法相关</a></li>
+    <li><a href="#数据结构">数据结构</a></li>
+    <li><a href="#3d数学">3D数学</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="常见问题整理">
+  常见问题整理
+  <a class="anchor" href="#%e5%b8%b8%e8%a7%81%e9%97%ae%e9%a2%98%e6%95%b4%e7%90%86">#</a>
+</h1>
+<blockquote class="book-hint info">
+  <strong>本序列问题会不停更新</strong><br>
+所有内容均来自真实面试企业提问，收集内容为开放式问答，需要自行整理答案，切记发散知识，不要只关注问题的表面！
+</blockquote>
+
+<h2 id="c语言">
+  C++语言
+  <a class="anchor" href="#c%e8%af%ad%e8%a8%80">#</a>
+</h2>
+<ol>
+<li>
+<p>cpp中动态库和静态库区别</p>
+</li>
+<li>
+<p>cpp中指针是不是数据结构</p>
+</li>
+<li>
+<p>cpp中定义常量使用宏还是const</p>
+</li>
+<li>
+<p>简单阐述下你认为运算符重载的意义</p>
+</li>
+<li>
+<p>阐述下设计模式中单例模式的意义</p>
+</li>
+<li>
+<p>说一说你使用过得版本控制工具，描述下使用中的问题</p>
+</li>
+<li>
+<p>cpp中，友元的优点和缺点</p>
+</li>
+<li>
+<p>面相对象的特性</p>
+</li>
+<li>
+<p>面相对象的设计原则 六个</p>
+</li>
+<li>
+<p>阐述下智能指针的实现手段和意义</p>
+</li>
+<li>
+<p>说出你认识的设计模式，阐述他们的特点，不少于五个</p>
+</li>
+<li>
+<p>针对接口编程的意义</p>
+</li>
+<li>
+<p>数组指针和指针数组区别</p>
+</li>
+<li>
+<p>指针数组加减一是否有意义？为什么？</p>
+</li>
+<li>
+<p>cpp中头文件的意义</p>
+</li>
+<li>
+<p>内联函数的意义</p>
+</li>
+<li>
+<p>虚函数实现，虚函数表</p>
+</li>
+<li>
+<p>虚继承相关知识了解（菱形继承）</p>
+</li>
+<li>
+<p>指针和引用的区别</p>
+<p>★ 相同点:</p>
+<ul>
+<li>都是地址的概念;指针指向一块内存，它的内容是所指内存的地址;引用是某块内存的别名。</li>
+</ul>
+<p>★ 区别:</p>
+<ul>
+<li>指针是一个实体，而引用仅是个别名;</li>
+<li>引用使用时无需解引用(*)，指针需要解引用;</li>
+<li>引用只能在定义时被初始化一次，之后不可变;指针可变;</li>
+<li>引用没有 const，指针有 const;</li>
+<li>引用不能为空，指针可以为空;</li>
+<li>“sizeof 引用”得到的是所指向的变量(对象)的大小，而“sizeof 指针”得到的是指针本身(所指向的变量或对象的地址)的大小;</li>
+<li>指针和引用的自增(++)运算意义不一样;</li>
+<li>从内存分配上看:程序为指针变量分配内存区域，而引用不需要分配内存区域。</li>
+</ul>
+</li>
+<li>
+<p>进程和线程的区别</p>
+</li>
+<li>
+<p>共用体是什么？</p>
+</li>
+<li>
+<p>C++中的多态是什么？</p>
+</li>
+<li>
+<p>C++11特性列举一些</p>
+</li>
+<li>
+<p>nullptr和NULL的区别</p>
+</li>
+<li>
+<p>宏编写逻辑体和使用函数的区别</p>
+</li>
+<li>
+<p>手写设计模式</p>
+</li>
+<li>
+<p>main函数执行前后做了什么？</p>
+</li>
+<li>
+<p>main函数为什么要返回数据整型</p>
+</li>
+<li>
+<p>C++在普通平台的差异一般有哪些？简单说一下</p>
+</li>
+<li>
+<p>结构体中添加函数，在内存中如何分配？</p>
+</li>
+</ol>
+<h2 id="虚幻引擎">
+  虚幻引擎
+  <a class="anchor" href="#%e8%99%9a%e5%b9%bb%e5%bc%95%e6%93%8e">#</a>
+</h2>
+<ol>
+<li>
+<p>ue中，正向是坐标系中的哪个轴</p>
+</li>
+<li>
+<p>在场景中创建actor的方法</p>
+</li>
+<li>
+<p>向蓝图暴露变量的宏是哪个？</p>
+</li>
+<li>
+<p>ue中如何创建uobject对象</p>
+</li>
+<li>
+<p>阐述下gamemode在ue框架中的意义</p>
+</li>
+<li>
+<p>如何使用charactermovement飞行？</p>
+</li>
+<li>
+<p>fstring,fname,ftext的使用场景举例下</p>
+</li>
+<li>
+<p>CDO class default object</p>
+</li>
+</ol>
+<h2 id="算法相关">
+  算法相关
+  <a class="anchor" href="#%e7%ae%97%e6%b3%95%e7%9b%b8%e5%85%b3">#</a>
+</h2>
+<ol>
+<li>阐述下二分查找法的时间复杂度是什么？</li>
+<li>数据结构中栈和队列区别</li>
+<li>动态规划</li>
+<li>数组排序</li>
+<li>正态分布</li>
+<li>排序算法</li>
+<li>二叉树</li>
+<li>红黑树</li>
+<li>平衡二叉树</li>
+<li>散列（算法特性和应用（容器map，stl模板库vector））</li>
+<li>手写链表并完成反转</li>
+</ol>
+<h2 id="数据结构">
+  数据结构
+  <a class="anchor" href="#%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84">#</a>
+</h2>
+<ol>
+<li>斐波那契数列</li>
+<li>链表是什么？手写单向链表和双向链表</li>
+<li>如何确定环形链表的头</li>
+<li>数组和vector的区别</li>
+<li>什么是堆</li>
+<li>什么是栈</li>
+<li>用C++完成设计栈</li>
+</ol>
+<h2 id="3d数学">
+  3D数学
+  <a class="anchor" href="#3d%e6%95%b0%e5%ad%a6">#</a>
+</h2>
+<ol>
+<li>点乘叉乘意义</li>
+<li>欧拉角的优缺点</li>
+</ol>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#c语言">C++语言</a></li>
+    <li><a href="#虚幻引擎">虚幻引擎</a></li>
+    <li><a href="#算法相关">算法相关</a></li>
+    <li><a href="#数据结构">数据结构</a></li>
+    <li><a href="#3d数学">3D数学</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

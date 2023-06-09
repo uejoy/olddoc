@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="1、联网操作（蓝图或C&#43;&#43;）#收录时间
+2022年11月12日
+基于虚幻引擎网络框架完成
+2人练机抢夺物品游戏，要求如下：#场景：一个带有门空房间，房间外有2个桌子 两名玩家联机，有开门动作，跑到一个屋子里面抢夺物品。 屋子里地面上有5个小物品 （可以超过五个，随机） 玩家随机拾取地面上的物品，放到屋外的桌子上 判断2人，谁搬运的物品更多，弹窗提示哪个玩家胜利 完成时间：1-2天内，提交作品视频
+扩展此问题（非面试要求）#游戏启动等待其他玩家加入，等待时长30秒 如超过30秒未有玩家加入，游戏结束。 玩家加入后必须在30秒内随机选择阵营颜色（游戏最多进入4人，颜色为红，黄，蓝，绿） 玩家可以输入昵称 如出现玩家未选择原色，未选择昵称，则系统随机分配颜色，并分配昵称。原则是，颜色不能重复，昵称不能重复。 根据玩家数量，生成对应颜色的球（位置随机在场景中），每个玩家生成5个球. 生成彩色球，彩色球5个，每个计分2份 对应颜色玩家可以拾取对应颜色的球，并且可以拾取彩色球。例如红色玩家可以拾取红色球或是彩色球，不能拾取其他颜色球。 将球放置到对应颜色的桌子。基础色球每个记1份，彩色球每个记2分。 每人每次只能拾取一个球。 彩色球可以放置到自己颜色桌子（自己加分），或是放置到其他颜色桌子（其他人加分） 游戏中可以随时查看游戏玩家积分情况 游戏胜利条件#积分模式：场上任意一种颜色球被拾取完毕，并且彩色球被抢夺完毕 计时模式：倒计时60秒，取分数最高的玩家胜利 注意胜利需要弹出胜利窗口，失败玩家提示再接再厉，并告知胜利者是谁
+2、本地图片读取（蓝图或C&#43;&#43;）#收录时间
+2022年11月12日读取本地图片（任意二十张图片）； umg中两种展示方式可任意切换； 展示方式一：九宫图，一页九张，切换至最后一页不足九张顺位开头n张补齐。点击任意一张皆可全屏显示。 展示方式二：轮播模式，一排三张，中间为大图预览，两边为小图预览，同时作为上下张翻页按钮，点击左侧小图三张图均切换为当前图片的上一张，点击右侧反之。点击中间大图全屏显示。 3、UMG测试（蓝图或C&#43;&#43;）#收录时间
+2022年11月12日
+引擎版本4.27&#43;
+umg树形结构：层级要求四级以上；一级管理者三到四个，二级管理者1~9人，三级管理者（0~9），四级以上（0~9）（需有一组体现出0） 推荐使用UMG TreeView。 员工模型（可用基础模型示意），同一类别（部门，下文中类别同义）用同种模型示意，职级大小用模型缩放示意。 员工模型上方显示两个字段，分别为职位、姓名。 不同类别站不同区域，同一级别站同一行。 点击umg列表中员工，与之对应的员工模型及职位姓名变色，其他未被此次点击的员工还原。 建议UMG列表与员工模型为自动生成（通过配置表）。使用TreeView
+参考示例#There should have been a video here but your browser does not seemto support it.">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="操作题" />
+<meta property="og:description" content="1、联网操作（蓝图或C&#43;&#43;）#收录时间
+2022年11月12日
+基于虚幻引擎网络框架完成
+2人练机抢夺物品游戏，要求如下：#场景：一个带有门空房间，房间外有2个桌子 两名玩家联机，有开门动作，跑到一个屋子里面抢夺物品。 屋子里地面上有5个小物品 （可以超过五个，随机） 玩家随机拾取地面上的物品，放到屋外的桌子上 判断2人，谁搬运的物品更多，弹窗提示哪个玩家胜利 完成时间：1-2天内，提交作品视频
+扩展此问题（非面试要求）#游戏启动等待其他玩家加入，等待时长30秒 如超过30秒未有玩家加入，游戏结束。 玩家加入后必须在30秒内随机选择阵营颜色（游戏最多进入4人，颜色为红，黄，蓝，绿） 玩家可以输入昵称 如出现玩家未选择原色，未选择昵称，则系统随机分配颜色，并分配昵称。原则是，颜色不能重复，昵称不能重复。 根据玩家数量，生成对应颜色的球（位置随机在场景中），每个玩家生成5个球. 生成彩色球，彩色球5个，每个计分2份 对应颜色玩家可以拾取对应颜色的球，并且可以拾取彩色球。例如红色玩家可以拾取红色球或是彩色球，不能拾取其他颜色球。 将球放置到对应颜色的桌子。基础色球每个记1份，彩色球每个记2分。 每人每次只能拾取一个球。 彩色球可以放置到自己颜色桌子（自己加分），或是放置到其他颜色桌子（其他人加分） 游戏中可以随时查看游戏玩家积分情况 游戏胜利条件#积分模式：场上任意一种颜色球被拾取完毕，并且彩色球被抢夺完毕 计时模式：倒计时60秒，取分数最高的玩家胜利 注意胜利需要弹出胜利窗口，失败玩家提示再接再厉，并告知胜利者是谁
+2、本地图片读取（蓝图或C&#43;&#43;）#收录时间
+2022年11月12日读取本地图片（任意二十张图片）； umg中两种展示方式可任意切换； 展示方式一：九宫图，一页九张，切换至最后一页不足九张顺位开头n张补齐。点击任意一张皆可全屏显示。 展示方式二：轮播模式，一排三张，中间为大图预览，两边为小图预览，同时作为上下张翻页按钮，点击左侧小图三张图均切换为当前图片的上一张，点击右侧反之。点击中间大图全屏显示。 3、UMG测试（蓝图或C&#43;&#43;）#收录时间
+2022年11月12日
+引擎版本4.27&#43;
+umg树形结构：层级要求四级以上；一级管理者三到四个，二级管理者1~9人，三级管理者（0~9），四级以上（0~9）（需有一组体现出0） 推荐使用UMG TreeView。 员工模型（可用基础模型示意），同一类别（部门，下文中类别同义）用同种模型示意，职级大小用模型缩放示意。 员工模型上方显示两个字段，分别为职位、姓名。 不同类别站不同区域，同一级别站同一行。 点击umg列表中员工，与之对应的员工模型及职位姓名变色，其他未被此次点击的员工还原。 建议UMG列表与员工模型为自动生成（通过配置表）。使用TreeView
+参考示例#There should have been a video here but your browser does not seemto support it." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/docs/interview/operation/op1/" /><meta property="article:section" content="docs" />
+
+
+
+<title>操作题 | 虚幻引擎资料整理🏆</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.8e0348f3b41fafa0106f0457e7282e446af2abf421ecf9617e65d36305748ccf.css" integrity="sha256-jgNI87Qfr6AQbwRX5yguRGryq/Qh7PlhfmXTYwV0jM8=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.1057937f0dcc23977e027794aa6ebb81e1bee61ea3d0573b8c6e7438462a69c6.js" integrity="sha256-EFeTfw3MI5d&#43;AneUqm67geG&#43;5h6j0Fc7jG50OEYqacY=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?cd2548ec3e7fddf6e77bfef48762fbd4";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>虚幻引擎资料整理🏆</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>企业面试题</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fb675c8699e61fdda47a85ce174c4d27" class="toggle"  />
+    <label for="section-fb675c8699e61fdda47a85ce174c4d27" class="flex justify-between">
+      <a role="button" class="">问答题</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/qa/basequestion/" class="">常见问题</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/qa/qha/" class="">整理带答案</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/qa/anyone/" class="">零散整理</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f23b051264b0e3f88e34022c158433f4" class="toggle"  />
+    <label for="section-f23b051264b0e3f88e34022c158433f4" class="flex justify-between">
+      <a role="button" class="">笔试题</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/dl/" class="">某公司笔试（1）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/nc/" class="">某公司笔试（10）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/gamegou/" class="">某公司笔试（2）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/zy/" class="">某公司笔试（3）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/gx/" class="">某公司笔试（4）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/zl/" class="">某公司笔试（5）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/yh/" class="">某公司笔试（6）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/hx/" class="">某公司笔试（7）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/rt/" class="">某公司笔试（8）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/cpp/" class="">某公司笔试（9）</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c34f1a03e6c6a01b68314c39b2d1e99b" class="toggle" checked />
+    <label for="section-c34f1a03e6c6a01b68314c39b2d1e99b" class="flex justify-between">
+      <a role="button" class="">操作题</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/operation/op1/" class="active">操作题</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>聊天服务器</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/chatserver/scsproto/" class="">SCS服务器</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://pome.cc"  target="_blank" rel="noopener">
+        🎁 Pome
+      </a>
+  </li>
+  
+  <li>
+    <a href="http://share.uejoy.com"  target="_blank" rel="noopener">
+        🍔网盘资源
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>操作题</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1联网操作蓝图或c">1、联网操作（蓝图或C++）</a>
+      <ul>
+        <li><a href="#2人练机抢夺物品游戏要求如下">2人练机抢夺物品游戏，要求如下：</a></li>
+        <li><a href="#扩展此问题非面试要求">扩展此问题（非面试要求）</a></li>
+      </ul>
+    </li>
+    <li><a href="#2本地图片读取蓝图或c">2、本地图片读取（蓝图或C++）</a></li>
+    <li><a href="#3umg测试蓝图或c">3、UMG测试（蓝图或C++）</a>
+      <ul>
+        <li><a href="#参考示例">参考示例</a></li>
+      </ul>
+    </li>
+    <li><a href="#4画线操作蓝图或c">4、画线操作（蓝图或C++）</a></li>
+    <li><a href="#5c链表测试c">5、C++链表测试（C++）</a></li>
+    <li><a href="#6综合操作蓝图和c">6、综合操作（蓝图和C++）</a></li>
+    <li><a href="#7蟋蟀互斗蓝图或c">7、蟋蟀互斗（蓝图或C++）</a></li>
+    <li><a href="#8蓝图动画题蓝图">8、蓝图动画题（蓝图）</a></li>
+    <li><a href="#9飞行模拟c">9、飞行模拟（C++）</a></li>
+    <li><a href="#10沙盘类项目测试蓝图">10、沙盘类项目测试（蓝图）</a></li>
+    <li><a href="#11商城功能测试c或蓝图">11、商城功能测试（C++或蓝图）</a>
+      <ul>
+        <li><a href="#基础需求">基础需求</a></li>
+        <li><a href="#拓展部分">拓展部分</a></li>
+        <li><a href="#寄售行">寄售行</a></li>
+      </ul>
+    </li>
+    <li><a href="#12操作题测试">12、操作题测试</a></li>
+    <li><a href="#13两道实训测试">13、两道实训测试</a>
+      <ul>
+        <li><a href="#实训题一">实训题一:</a></li>
+        <li><a href="#实训题二">实训题二</a></li>
+      </ul>
+    </li>
+    <li><a href="#14翻页操作题">14、翻页操作题</a></li>
+    <li><a href="#15火烧绳子问题">15、火烧绳子问题</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h2 id="1联网操作蓝图或c">
+  1、联网操作（蓝图或C++）
+  <a class="anchor" href="#1%e8%81%94%e7%bd%91%e6%93%8d%e4%bd%9c%e8%93%9d%e5%9b%be%e6%88%96c">#</a>
+</h2>
+<blockquote class="book-hint info">
+  <p><strong>收录时间</strong><br>
+2022年11月12日</p>
+<p>基于虚幻引擎网络框架完成</p>
+
+</blockquote>
+
+<h3 id="2人练机抢夺物品游戏要求如下">
+  2人练机抢夺物品游戏，要求如下：
+  <a class="anchor" href="#2%e4%ba%ba%e7%bb%83%e6%9c%ba%e6%8a%a2%e5%a4%ba%e7%89%a9%e5%93%81%e6%b8%b8%e6%88%8f%e8%a6%81%e6%b1%82%e5%a6%82%e4%b8%8b">#</a>
+</h3>
+<ol>
+<li>场景：一个带有门空房间，房间外有2个桌子</li>
+<li>两名玩家联机，有开门动作，跑到一个屋子里面抢夺物品。</li>
+<li>屋子里地面上有5个小物品 <strong>（可以超过五个，随机）</strong></li>
+<li>玩家随机拾取地面上的物品，放到屋外的桌子上</li>
+<li>判断2人，谁搬运的物品更多，弹窗提示哪个玩家胜利</li>
+</ol>
+<p>完成时间：1-2天内，提交作品视频</p>
+<h3 id="扩展此问题非面试要求">
+  扩展此问题（非面试要求）
+  <a class="anchor" href="#%e6%89%a9%e5%b1%95%e6%ad%a4%e9%97%ae%e9%a2%98%e9%9d%9e%e9%9d%a2%e8%af%95%e8%a6%81%e6%b1%82">#</a>
+</h3>
+<ol>
+<li>游戏启动等待其他玩家加入，等待时长30秒</li>
+<li>如超过30秒未有玩家加入，游戏结束。</li>
+<li>玩家加入后必须在30秒内随机选择阵营颜色（<strong>游戏最多进入4人，颜色为红，黄，蓝，绿</strong>）</li>
+<li>玩家可以输入昵称</li>
+<li>如出现玩家未选择原色，未选择昵称，则系统随机分配颜色，并分配昵称。原则是，颜色不能重复，昵称不能重复。</li>
+<li>根据玩家数量，生成对应颜色的球（位置随机在场景中），每个玩家生成5个球.</li>
+<li>生成彩色球，彩色球5个，每个计分2份</li>
+<li>对应颜色玩家可以拾取对应颜色的球，并且可以拾取彩色球。例如红色玩家可以拾取红色球或是彩色球，不能拾取其他颜色球。</li>
+<li>将球放置到对应颜色的桌子。基础色球每个记1份，彩色球每个记2分。</li>
+<li>每人每次只能拾取一个球。</li>
+<li>彩色球可以放置到自己颜色桌子（自己加分），或是放置到其他颜色桌子（其他人加分）</li>
+<li>游戏中可以随时查看游戏玩家积分情况</li>
+</ol>
+<h4 id="游戏胜利条件">
+  游戏胜利条件
+  <a class="anchor" href="#%e6%b8%b8%e6%88%8f%e8%83%9c%e5%88%a9%e6%9d%a1%e4%bb%b6">#</a>
+</h4>
+<ul>
+<li>积分模式：场上任意一种颜色球被拾取完毕，并且彩色球被抢夺完毕</li>
+<li>计时模式：倒计时60秒，取分数最高的玩家胜利</li>
+</ul>
+<p><strong>注意胜利需要弹出胜利窗口，失败玩家提示再接再厉，并告知胜利者是谁</strong></p>
+<hr>
+<h2 id="2本地图片读取蓝图或c">
+  2、本地图片读取（蓝图或C++）
+  <a class="anchor" href="#2%e6%9c%ac%e5%9c%b0%e5%9b%be%e7%89%87%e8%af%bb%e5%8f%96%e8%93%9d%e5%9b%be%e6%88%96c">#</a>
+</h2>
+<blockquote class="book-hint info">
+  <strong>收录时间</strong><br>
+2022年11月12日
+</blockquote>
+
+<ol>
+<li>读取本地图片（任意二十张图片）；</li>
+<li>umg中两种展示方式可任意切换；</li>
+<li>展示方式一：九宫图，一页九张，切换至最后一页不足九张顺位开头n张补齐。点击任意一张皆可全屏显示。</li>
+<li>展示方式二：轮播模式，一排三张，中间为大图预览，两边为小图预览，同时作为上下张翻页按钮，点击左侧小图三张图均切换为当前图片的上一张，点击右侧反之。点击中间大图全屏显示。</li>
+</ol>
+<hr>
+<h2 id="3umg测试蓝图或c">
+  3、UMG测试（蓝图或C++）
+  <a class="anchor" href="#3umg%e6%b5%8b%e8%af%95%e8%93%9d%e5%9b%be%e6%88%96c">#</a>
+</h2>
+<blockquote class="book-hint info">
+  <p><strong>收录时间</strong><br>
+2022年11月12日</p>
+<p>引擎版本4.27+</p>
+
+</blockquote>
+
+<ol>
+<li>umg树形结构：层级要求四级以上；一级管理者三到四个，二级管理者1~9人，三级管理者（0~9），四级以上（0~9）（需有一组体现出0）
+推荐使用UMG TreeView。</li>
+<li>员工模型（可用基础模型示意），同一类别（部门，下文中类别同义）用同种模型示意，职级大小用模型缩放示意。</li>
+<li>员工模型上方显示两个字段，分别为职位、姓名。</li>
+<li>不同类别站不同区域，同一级别站同一行。</li>
+<li>点击umg列表中员工，与之对应的员工模型及职位姓名变色，其他未被此次点击的员工还原。</li>
+</ol>
+<p><strong>建议UMG列表与员工模型为自动生成（通过配置表）。使用TreeView</strong></p>
+<h3 id="参考示例">
+  参考示例
+  <a class="anchor" href="#%e5%8f%82%e8%80%83%e7%a4%ba%e4%be%8b">#</a>
+</h3>
+<video class="video-shortcode" preload="auto" controls>
+    <source src="/videos/callNamedemo.mp4" type="video/webm">
+    There should have been a video here but your browser does not seem
+    to support it.
+</video>
+<hr>
+<h2 id="4画线操作蓝图或c">
+  4、画线操作（蓝图或C++）
+  <a class="anchor" href="#4%e7%94%bb%e7%ba%bf%e6%93%8d%e4%bd%9c%e8%93%9d%e5%9b%be%e6%88%96c">#</a>
+</h2>
+<blockquote class="book-hint info">
+  <p><strong>收录时间</strong><br>
+2022年03月11日</p>
+<p>引擎版本4.27+</p>
+
+</blockquote>
+
+<p>描述：在UE4场景中，鼠标每次点击时，拾取点中物体的坐标位置（鼠标点击的那个位置），将鼠标点击位置进行空间画线。当结束功能时，给出空间线的总长度。</p>
+<hr>
+<h2 id="5c链表测试c">
+  5、C++链表测试（C++）
+  <a class="anchor" href="#5c%e9%93%be%e8%a1%a8%e6%b5%8b%e8%af%95c">#</a>
+</h2>
+<blockquote class="book-hint info">
+  <strong>收录时间</strong><br>
+2022年03月11日
+</blockquote>
+
+<p>描述：用UE C++写一个简单的程序。使用链表方式，做一个简单的数据求和的功能。</p>
+<hr>
+<h2 id="6综合操作蓝图和c">
+  6、综合操作（蓝图和C++）
+  <a class="anchor" href="#6%e7%bb%bc%e5%90%88%e6%93%8d%e4%bd%9c%e8%93%9d%e5%9b%be%e5%92%8cc">#</a>
+</h2>
+<blockquote class="book-hint info">
+  <p><strong>收录时间</strong><br>
+2022年03月11日</p>
+<p>必须使用蓝图和C++混编</p>
+
+</blockquote>
+
+<p>描述：用UE C++写一个自己的actor，这个actor包含一个碰撞体，和一个3DWidget,要求3DWidget上边带有数字。在编辑器中，用BP脚本实例化这个actor（可以是任意形状、正方体、球体），当鼠标点击这个actor后，弹出3DWidget。用BP另外建一个UI，这个UI上可以输入数字，当在这个UI输入数字后，actor弹出的3DWdiget上的数字要跟着改变。</p>
+<hr>
+<h2 id="7蟋蟀互斗蓝图或c">
+  7、蟋蟀互斗（蓝图或C++）
+  <a class="anchor" href="#7%e8%9f%8b%e8%9f%80%e4%ba%92%e6%96%97%e8%93%9d%e5%9b%be%e6%88%96c">#</a>
+</h2>
+<!-- raw HTML omitted -->
+<blockquote class="book-hint info">
+  <p><strong>收录时间</strong><br>
+2021年08月25日</p>
+<p>优先选用蓝图完成</p>
+<p>注意审题，操作方式实现方式随意，需要贴合设计题目</p>
+
+</blockquote>
+
+<!-- raw HTML omitted -->
+<p>斗蟋蟀交互内容：</p>
+<p>参考图示，用两个简单物体代表两只蟋蟀，蟋蟀分为红方和蓝方，各有2点血（要能看出头部方向，可以用BOX代替）</p>
+<p>两个物体的运动限制在一个圆圈范围以内，两个物体随机朝着对方进行跳跃攻击，被攻击的一方会向后撤步，攻击方会扑空，然后两只蟋蟀，退回到中间位置，再进行随机判定。</p>
+<p>整个循环中，会随机出现一个倒计时的时间（两组倒计时时间不少于5秒），在倒计时的期间，如果用鼠标对其中红方的头部进行点击，红色蟋蟀便会跳跃起来咬向蓝方，蓝方会扣一点血（扣完后，两只蟋蟀归位）。如果第二次撩拨蟋蟀成功，红色会咬向蓝色，蓝色2点血减完便会显示死亡，画面显示我方成功。如果两次倒计时后，都没有来得及点蟋蟀头部，蓝色便会咬向红色，红色死亡，画面显示敌方成功。</p>
+<hr>
+<h2 id="8蓝图动画题蓝图">
+  8、蓝图动画题（蓝图）
+  <a class="anchor" href="#8%e8%93%9d%e5%9b%be%e5%8a%a8%e7%94%bb%e9%a2%98%e8%93%9d%e5%9b%be">#</a>
+</h2>
+<!-- raw HTML omitted -->
+<blockquote class="book-hint info">
+  <p><strong>收录时间</strong><br>
+2022年03月27日</p>
+<p>优先选用蓝图完成</p>
+
+</blockquote>
+
+<!-- raw HTML omitted -->
+<ol>
+<li>创建接口，输入输出参数int数组</li>
+<li>Actor实现接口，进行排序</li>
+<li>Level关卡生成int数组，进行初始化10个元素[1,100]，接口实现排序</li>
+<li>数组最大值 - 最小值 = val，0 &lt; val &lt; 50 人在原地走，50 &lt; val &lt; 80 人上身走，下身跑，val &gt; 80人自动走到一个固定点</li>
+<li>根据val值生成多个A，每行15个，以UMG输出到屏幕</li>
+</ol>
+<hr>
+<h2 id="9飞行模拟c">
+  9、飞行模拟（C++）
+  <a class="anchor" href="#9%e9%a3%9e%e8%a1%8c%e6%a8%a1%e6%8b%9fc">#</a>
+</h2>
+<!-- raw HTML omitted -->
+<blockquote class="book-hint info">
+  <p><strong>收录时间</strong><br>
+2022年01月06日</p>
+<p>此题难度较大，绕不开C++</p>
+
+</blockquote>
+
+<p><strong>一周时间发相应录屏（能从视频中看到下面的考查点），此题为开发性题目，作为评估岗位能力主要依据</strong></p>
+<p>第一题：引擎（UE4或者U3D，根据应聘岗位自选）+网络+小算法</p>
+<p>制作一服务器端，场景不做要求（可以网上下载一个可以反映飞机的运动感觉的场景），界面上有两个按钮，一个自动模式，一个手动模式，程序启动后默认为自动。场景默认显示一飞机沿设定好的路线在飞(考查路径跟踪算法）。点击手动模式按钮，此时可以用键盘鼠标等手动控制飞机飞行。能控制飞机俯仰（限定俯仰角-30-30之间）、偏航、加速、减速，横滚(限定横滚角-30-30之间)。再点击自动模式，飞机能平滑飞回原先的航线（考查切回航线算法）沿设定路线飞行。</p>
+<p>客户端连接后，本服务器向客户端每隔一帧发送当前飞机姿态和位置。客户端根据服务器发来的位置和姿态同步显示客户端程序内置的飞机。</p>
+<p>说明：路线为首尾连接可循环路线。路线的任意一个关键点与下一个点之间大于1公里，路线总距离大于50公里。</p>
+<p><strong>网络请使用原始Sokect模式编写，UDP或者TCP可以自选。</strong></p>
+<hr>
+<h2 id="10沙盘类项目测试蓝图">
+  10、沙盘类项目测试（蓝图）
+  <a class="anchor" href="#10%e6%b2%99%e7%9b%98%e7%b1%bb%e9%a1%b9%e7%9b%ae%e6%b5%8b%e8%af%95%e8%93%9d%e5%9b%be">#</a>
+</h2>
+<blockquote class="book-hint info">
+  <p><strong>收录时间</strong><br>
+2021年05月29日</p>
+<p>此题较为简单，使用蓝图完成即可，注意操作反馈</p>
+
+</blockquote>
+
+<p>参照视频完成项目制作</p>
+<video class="video-shortcode" preload="auto" controls>
+    <source src="/videos/stair.mp4" type="video/webm">
+    There should have been a video here but your browser does not seem
+    to support it.
+</video>
+<hr>
+<h2 id="11商城功能测试c或蓝图">
+  11、商城功能测试（C++或蓝图）
+  <a class="anchor" href="#11%e5%95%86%e5%9f%8e%e5%8a%9f%e8%83%bd%e6%b5%8b%e8%af%95c%e6%88%96%e8%93%9d%e5%9b%be">#</a>
+</h2>
+<blockquote class="book-hint info">
+  <p><strong>收录时间</strong><br>
+2021年11月25日</p>
+<p>注意考虑数据驱动逻辑</p>
+
+</blockquote>
+
+<p>要求：道具信息需要读取本地JSON文件，商店信息需要读取本地JSON。</p>
+<p>素材可以根据实际情况寻找</p>
+<h3 id="基础需求">
+  基础需求
+  <a class="anchor" href="#%e5%9f%ba%e7%a1%80%e9%9c%80%e6%b1%82">#</a>
+</h3>
+<ol>
+<li>搭建测试场景，并摆放多个NPC</li>
+<li>每个NPC挂载一种商店（布料店，武器店，防具店，材料店）</li>
+<li>走进NPC点击开启弹窗，选择进入商店或是对话（对话可以随意设计，添加随机内容）</li>
+<li>打开商店页面，要求显示商店内容与玩家背包</li>
+<li>玩家背包限制格子数量，例如最大格子20各</li>
+<li>拖拽道具到背包为购买，拖拽道具到商店为出售。</li>
+<li>出售道具价格为购买价格的70%</li>
+<li>鼠标悬停显示道具信息（图标，名称，等级，价格，品质，属性，用途，描述等，不限）</li>
+</ol>
+<h3 id="拓展部分">
+  拓展部分
+  <a class="anchor" href="#%e6%8b%93%e5%b1%95%e9%83%a8%e5%88%86">#</a>
+</h3>
+<ol>
+<li>可设计道具堆叠特性，购买时填入购买数量</li>
+<li>出售时堆叠道具可选出售数量</li>
+<li>堆叠道具可自动堆叠到背包中已有道具上</li>
+<li>增加道具排序功能，例如遵循价格，品质等</li>
+<li>增加筛选功能</li>
+<li>增加搜索功能</li>
+<li>增加整理功能（整理规则随意设定）</li>
+</ol>
+<h3 id="寄售行">
+  寄售行
+  <a class="anchor" href="#%e5%af%84%e5%94%ae%e8%a1%8c">#</a>
+</h3>
+<ol>
+<li>可设计寄售行系统，所有背包道具可以挂载到寄售行完成道具寄售</li>
+<li>玩家可以选择寄售行撤销出售道具</li>
+<li>设计联网，其他玩家可以通过网络购买寄售行道具</li>
+<li>寄售行道具出售后，卖方接收到信息，提示道具出售成功，获取收益</li>
+</ol>
+<p>注意：无需考虑存储问题</p>
+<h2 id="12操作题测试">
+  12、操作题测试
+  <a class="anchor" href="#12%e6%93%8d%e4%bd%9c%e9%a2%98%e6%b5%8b%e8%af%95">#</a>
+</h2>
+<blockquote class="book-hint info">
+  <p><strong>收录时间</strong><br>
+2019年11月6日</p>
+<p>蓝图或是C++完成均可</p>
+
+</blockquote>
+
+<p>做个umg，随机输入十个数，后台进行排序，展示最大值。如果最大值小于50，人从a点走到b点。如果值在60-80之间，做一个人物动画混合，上身走下身跑。如果在80-100之间，给场景物体做一个描边。</p>
+<h2 id="13两道实训测试">
+  13、两道实训测试
+  <a class="anchor" href="#13%e4%b8%a4%e9%81%93%e5%ae%9e%e8%ae%ad%e6%b5%8b%e8%af%95">#</a>
+</h2>
+<blockquote class="book-hint info">
+  <p><strong>收录时间</strong><br>
+2019年10月24日</p>
+<p>真实面试企业需求题，二选一</p>
+<p>蓝图或是C++完成均可</p>
+
+</blockquote>
+
+<h3 id="实训题一">
+  实训题一:
+  <a class="anchor" href="#%e5%ae%9e%e8%ae%ad%e9%a2%98%e4%b8%80">#</a>
+</h3>
+<p>声纳光波效果-&gt;设置一个actor为需要找寻的物体，发射声纳光波，碰到需要找寻的物体.物体返回不同颜色的光波</p>
+<h3 id="实训题二">
+  实训题二
+  <a class="anchor" href="#%e5%ae%9e%e8%ae%ad%e9%a2%98%e4%ba%8c">#</a>
+</h3>
+<p>制作一个简单的弹药系统，弹药量(30/60)</p>
+<p>描述:做一个弹药箱，移动到附近范围，按下E键可补充弹药(后备弹药充足，面版提示“后备弹药已满”，后备弹药不满时，按下E可补充后备弹药和弹夹弹药，面版提示“正在补给”，三秒后补充完毕。补充时中断则不予补给弹药。)UI面版展示弹药实时数据。
+R键换弹(后备弹药填装到弹
+夹，并可以发射)</p>
+<p>弹夹为0不能发射。</p>
+<h2 id="14翻页操作题">
+  14、翻页操作题
+  <a class="anchor" href="#14%e7%bf%bb%e9%a1%b5%e6%93%8d%e4%bd%9c%e9%a2%98">#</a>
+</h2>
+<blockquote class="book-hint info">
+  <p><strong>收录时间</strong><br>
+2019年5月17日</p>
+<p>蓝图或是C++完成均可，注意翻页过程中如果增加动画体验会更好</p>
+
+</blockquote>
+
+<p>基本功能：</p>
+<ol>
+<li>使用UMG完成一个翻页功能，可以向左（上一张）向右（下一张）翻页，以及退出功能。翻页效果不限，用图需清晰比例正确。</li>
+<li>可以同时显示三张图，如下图。
+<img src="/images/zd/0.png" alt="" /></li>
+<li>双击中间的图可以全屏显示，全屏显示后依然能够翻页，如下图。
+<img src="/images/zd/1.png" alt="" /></li>
+</ol>
+<ul>
+<li>加分项1：项目发布后，客户依然可以在指定路径下更换图片。</li>
+<li>加分项2：鼠标滑动屏幕完成翻页。</li>
+<li>加分项3：同时能够兼容播放视频。</li>
+</ul>
+<h2 id="15火烧绳子问题">
+  15、火烧绳子问题
+  <a class="anchor" href="#15%e7%81%ab%e7%83%a7%e7%bb%b3%e5%ad%90%e9%97%ae%e9%a2%98">#</a>
+</h2>
+<p><blockquote class="book-hint info">
+  <p><strong>收录时间</strong><br>
+2018年8月1日</p>
+<p>蓝图或是C++完成均可</p>
+<p><strong>注意：由于素材缺失，故可以读一下操作即可</strong></p>
+
+</blockquote>
+
+请使用桌面上名为[ExamProject] 的项目</p>
+<ol>
+<li>玩家是一根火柴柜子把手上有绳子系着，需要用火柴将绳子烧断要求:</li>
+</ol>
+<p>火柴必须具有可扩展性点燃与被点燃请使用接口来实现(比如突然想让你点燃其他物体能快速的让其他物体实现被点燃的效果)“禁止使用 GetAlIActorsr
+禁止绳子直接访问柜子的方法，请使用接口或 Dispatchert</p>
+<ol start="2">
+<li>天花板会滴水，滴到绳子上，玩家如果直接烧绳子，绳子上燃烧的火焰就会被
+水打灭，绳子不会被烧开“</li>
+</ol>
+<p>要求</p>
+<p>请留意当将滴水与绳子在游戏地图上分开时请解决无限生成等会导致性能较低的问题，使其即使滴落到地面上也没问题”</p>
+<ol start="3">
+<li>玩家需要按下E键可在自己所在的位置创造出随机物体(书，瓶子等)挡在绳子上面才可以成功将绳子烧断</li>
+</ol>
+<p>要求</p>
+<p>物体必须开启物理模拟，水滴不能将遮挡的物体打飞e
+0在满足以上条件的情况下可自由发挥，保持逻辑清晰即可+</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1联网操作蓝图或c">1、联网操作（蓝图或C++）</a>
+      <ul>
+        <li><a href="#2人练机抢夺物品游戏要求如下">2人练机抢夺物品游戏，要求如下：</a></li>
+        <li><a href="#扩展此问题非面试要求">扩展此问题（非面试要求）</a></li>
+      </ul>
+    </li>
+    <li><a href="#2本地图片读取蓝图或c">2、本地图片读取（蓝图或C++）</a></li>
+    <li><a href="#3umg测试蓝图或c">3、UMG测试（蓝图或C++）</a>
+      <ul>
+        <li><a href="#参考示例">参考示例</a></li>
+      </ul>
+    </li>
+    <li><a href="#4画线操作蓝图或c">4、画线操作（蓝图或C++）</a></li>
+    <li><a href="#5c链表测试c">5、C++链表测试（C++）</a></li>
+    <li><a href="#6综合操作蓝图和c">6、综合操作（蓝图和C++）</a></li>
+    <li><a href="#7蟋蟀互斗蓝图或c">7、蟋蟀互斗（蓝图或C++）</a></li>
+    <li><a href="#8蓝图动画题蓝图">8、蓝图动画题（蓝图）</a></li>
+    <li><a href="#9飞行模拟c">9、飞行模拟（C++）</a></li>
+    <li><a href="#10沙盘类项目测试蓝图">10、沙盘类项目测试（蓝图）</a></li>
+    <li><a href="#11商城功能测试c或蓝图">11、商城功能测试（C++或蓝图）</a>
+      <ul>
+        <li><a href="#基础需求">基础需求</a></li>
+        <li><a href="#拓展部分">拓展部分</a></li>
+        <li><a href="#寄售行">寄售行</a></li>
+      </ul>
+    </li>
+    <li><a href="#12操作题测试">12、操作题测试</a></li>
+    <li><a href="#13两道实训测试">13、两道实训测试</a>
+      <ul>
+        <li><a href="#实训题一">实训题一:</a></li>
+        <li><a href="#实训题二">实训题二</a></li>
+      </ul>
+    </li>
+    <li><a href="#14翻页操作题">14、翻页操作题</a></li>
+    <li><a href="#15火烧绳子问题">15、火烧绳子问题</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

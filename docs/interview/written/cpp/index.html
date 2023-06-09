@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="C&#43;&#43;基础#一、选择题#在C&#43;&#43;中，数组类型属于（） A.本数据类型 B.自定义数琳类型 C.类类型 D.结构体类型 若有语句:float array[3][5][7];则数组array 的元素个数为() A.3 B.5 C.7 D.105 关于析构函数，下面说法不正确的是() A.析构函数用来完成对象被删除前的一些清理工作 B.析构函数可以声明为重载函数 C.析构函数可以声明为虚函数 D.析构函数在对象的生存期即将结束时被系统自动调用 关于抽象类，下列说法不正确的是() A.抽象类不能实例化 B.带有虚函数的类称为抽象类 C.带有纯虚函数的类称为抽象类 D.抽象类的作用是为一个类族建立一个公共接口 下列对一维数组a的正确定义是() A.int n=5,a[n]; B.int a(5); C.const int n-5;int a[n]; D.int n;cin&raquo;n;int a[n]; 下列数组定义语句中，不合法的是() A.int a[3]={0,1,2,3}; B.int a[]={0,1,2}; C.int a[3]={0,1,2}; D.int a[3]={0}; 己知int a[10]={0，1，2，3，4，5，6，7，8，9}和*p=a，则不能表示数组a中元素的式子是()。 A.*a B.*p C.a D.a[p-a] 已知char *a[]={&ldquo;fortraan&rdquo;, &ldquo;basic&rdquo;, &ldquo;pascal&rdquo;, &ldquo;java&rdquo;, &ldquo;c&#43;&#43;&quot;}，则cout&laquo;a[3]，的显示结果是（） A.basie B.paseal C.java D.javact&#43; 若用数组名作为调用函数的实参，则传递给形参的是() A.数组存储首地址 B.数组第一个元素的值 C.数组元素的个数 D.数组中全部元素的值 判字符串sl和s2是否相等的正确表达式是（） A.">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="某公司笔试（9）" />
+<meta property="og:description" content="C&#43;&#43;基础#一、选择题#在C&#43;&#43;中，数组类型属于（） A.本数据类型 B.自定义数琳类型 C.类类型 D.结构体类型 若有语句:float array[3][5][7];则数组array 的元素个数为() A.3 B.5 C.7 D.105 关于析构函数，下面说法不正确的是() A.析构函数用来完成对象被删除前的一些清理工作 B.析构函数可以声明为重载函数 C.析构函数可以声明为虚函数 D.析构函数在对象的生存期即将结束时被系统自动调用 关于抽象类，下列说法不正确的是() A.抽象类不能实例化 B.带有虚函数的类称为抽象类 C.带有纯虚函数的类称为抽象类 D.抽象类的作用是为一个类族建立一个公共接口 下列对一维数组a的正确定义是() A.int n=5,a[n]; B.int a(5); C.const int n-5;int a[n]; D.int n;cin&raquo;n;int a[n]; 下列数组定义语句中，不合法的是() A.int a[3]={0,1,2,3}; B.int a[]={0,1,2}; C.int a[3]={0,1,2}; D.int a[3]={0}; 己知int a[10]={0，1，2，3，4，5，6，7，8，9}和*p=a，则不能表示数组a中元素的式子是()。 A.*a B.*p C.a D.a[p-a] 已知char *a[]={&ldquo;fortraan&rdquo;, &ldquo;basic&rdquo;, &ldquo;pascal&rdquo;, &ldquo;java&rdquo;, &ldquo;c&#43;&#43;&quot;}，则cout&laquo;a[3]，的显示结果是（） A.basie B.paseal C.java D.javact&#43; 若用数组名作为调用函数的实参，则传递给形参的是() A.数组存储首地址 B.数组第一个元素的值 C.数组元素的个数 D.数组中全部元素的值 判字符串sl和s2是否相等的正确表达式是（） A." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/docs/interview/written/cpp/" /><meta property="article:section" content="docs" />
+
+
+
+<title>某公司笔试（9） | 虚幻引擎资料整理🏆</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.8e0348f3b41fafa0106f0457e7282e446af2abf421ecf9617e65d36305748ccf.css" integrity="sha256-jgNI87Qfr6AQbwRX5yguRGryq/Qh7PlhfmXTYwV0jM8=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.1057937f0dcc23977e027794aa6ebb81e1bee61ea3d0573b8c6e7438462a69c6.js" integrity="sha256-EFeTfw3MI5d&#43;AneUqm67geG&#43;5h6j0Fc7jG50OEYqacY=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?cd2548ec3e7fddf6e77bfef48762fbd4";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>虚幻引擎资料整理🏆</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>企业面试题</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fb675c8699e61fdda47a85ce174c4d27" class="toggle"  />
+    <label for="section-fb675c8699e61fdda47a85ce174c4d27" class="flex justify-between">
+      <a role="button" class="">问答题</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/qa/basequestion/" class="">常见问题</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/qa/qha/" class="">整理带答案</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/qa/anyone/" class="">零散整理</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f23b051264b0e3f88e34022c158433f4" class="toggle" checked />
+    <label for="section-f23b051264b0e3f88e34022c158433f4" class="flex justify-between">
+      <a role="button" class="">笔试题</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/dl/" class="">某公司笔试（1）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/nc/" class="">某公司笔试（10）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/gamegou/" class="">某公司笔试（2）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/zy/" class="">某公司笔试（3）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/gx/" class="">某公司笔试（4）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/zl/" class="">某公司笔试（5）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/yh/" class="">某公司笔试（6）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/hx/" class="">某公司笔试（7）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/rt/" class="">某公司笔试（8）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/cpp/" class="active">某公司笔试（9）</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c34f1a03e6c6a01b68314c39b2d1e99b" class="toggle"  />
+    <label for="section-c34f1a03e6c6a01b68314c39b2d1e99b" class="flex justify-between">
+      <a role="button" class="">操作题</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/operation/op1/" class="">操作题</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>聊天服务器</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/chatserver/scsproto/" class="">SCS服务器</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://pome.cc"  target="_blank" rel="noopener">
+        🎁 Pome
+      </a>
+  </li>
+  
+  <li>
+    <a href="http://share.uejoy.com"  target="_blank" rel="noopener">
+        🍔网盘资源
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>某公司笔试（9）</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#c基础">C++基础</a>
+      <ul>
+        <li><a href="#一选择题">一、选择题</a></li>
+        <li><a href="#二操作题写出伪代码即可">二、操作题(写出伪代码即可)</a></li>
+      </ul>
+    </li>
+    <li><a href="#虚幻引擎基础">虚幻引擎基础</a>
+      <ul>
+        <li><a href="#简答题">简答题</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h2 id="c基础">
+  C++基础
+  <a class="anchor" href="#c%e5%9f%ba%e7%a1%80">#</a>
+</h2>
+<h3 id="一选择题">
+  一、选择题
+  <a class="anchor" href="#%e4%b8%80%e9%80%89%e6%8b%a9%e9%a2%98">#</a>
+</h3>
+<ol>
+<li>在C++中，数组类型属于（）</li>
+</ol>
+<ul>
+<li>A.本数据类型</li>
+<li>B.自定义数琳类型</li>
+<li>C.类类型</li>
+<li>D.结构体类型</li>
+</ul>
+<ol start="2">
+<li>若有语句:float array[3][5][7];则数组array 的元素个数为()</li>
+</ol>
+<ul>
+<li>A.3</li>
+<li>B.5</li>
+<li>C.7</li>
+<li>D.105</li>
+</ul>
+<ol start="3">
+<li>关于析构函数，下面说法不正确的是()</li>
+</ol>
+<ul>
+<li>A.析构函数用来完成对象被删除前的一些清理工作</li>
+<li>B.析构函数可以声明为重载函数</li>
+<li>C.析构函数可以声明为虚函数</li>
+<li>D.析构函数在对象的生存期即将结束时被系统自动调用</li>
+</ul>
+<ol start="4">
+<li>关于抽象类，下列说法不正确的是()</li>
+</ol>
+<ul>
+<li>A.抽象类不能实例化</li>
+<li>B.带有虚函数的类称为抽象类</li>
+<li>C.带有纯虚函数的类称为抽象类</li>
+<li>D.抽象类的作用是为一个类族建立一个公共接口</li>
+</ul>
+<ol start="5">
+<li>下列对一维数组a的正确定义是()</li>
+</ol>
+<ul>
+<li>A.int n=5,a[n];</li>
+<li>B.int a(5);</li>
+<li>C.const int n-5;int a[n];</li>
+<li>D.int n;cin&raquo;n;int a[n];</li>
+</ul>
+<ol start="6">
+<li>下列数组定义语句中，不合法的是()</li>
+</ol>
+<ul>
+<li>A.int a[3]={0,1,2,3};</li>
+<li>B.int a[]={0,1,2};</li>
+<li>C.int a[3]={0,1,2};</li>
+<li>D.int a[3]={0};</li>
+</ul>
+<ol start="7">
+<li>己知int a[10]={0，1，2，3，4，5，6，7，8，9}和*p=a，则不能表示数组a中元素的式子是()。</li>
+</ol>
+<ul>
+<li>A.*a</li>
+<li>B.*p</li>
+<li>C.a</li>
+<li>D.a[p-a]</li>
+</ul>
+<ol start="8">
+<li>已知char *a[]={&ldquo;fortraan&rdquo;, &ldquo;basic&rdquo;, &ldquo;pascal&rdquo;, &ldquo;java&rdquo;, &ldquo;c++&quot;}，则cout&laquo;a[3]，的显示结果是（）</li>
+</ol>
+<ul>
+<li>A.basie</li>
+<li>B.paseal</li>
+<li>C.java</li>
+<li>D.javact+</li>
+</ul>
+<ol start="9">
+<li>若用数组名作为调用函数的实参，则传递给形参的是()</li>
+</ol>
+<ul>
+<li>A.数组存储首地址</li>
+<li>B.数组第一个元素的值</li>
+<li>C.数组元素的个数</li>
+<li>D.数组中全部元素的值</li>
+</ul>
+<ol start="10">
+<li>判字符串sl和s2是否相等的正确表达式是（）</li>
+</ol>
+<ul>
+<li>A.s1=s2:</li>
+<li>B.s1==s2;</li>
+<li>C.strcmp(sl,s2)==0;</li>
+<li>D.strcpy(sl,s2);</li>
+</ul>
+<ol start="11">
+<li>下面选项中，不是类的成员函数的为()</li>
+</ol>
+<ul>
+<li>A.构造函数</li>
+<li>B.析构函数</li>
+<li>C.友元函数</li>
+<li>D.拷贝构造雨数</li>
+</ul>
+<ol start="12">
+<li>不论派生类以何种方式继承基类，都不能使用基类的()</li>
+</ol>
+<ul>
+<li>A.public成员</li>
+<li>B.private成员</li>
+<li>C.protected成员</li>
+<li>D.public和protected成员</li>
+</ul>
+<ol>
+<li>在一个派生类中重新定义基类的虚函数时，应使()</li>
+</ol>
+<ul>
+<li>A.函数名相同，但参数不同;</li>
+<li>B.函数名相同，但函数返回值类型不同;</li>
+<li>C.函数名、函数返回值类型、参数个数、参数类型和顺序各不相同</li>
+<li>D.函数名、函数返回值类型、参数个数、参数类型和顺序完全相同</li>
+</ul>
+<ol start="14">
+<li>如果把基类的析构函数声明为虚函数，则()</li>
+</ol>
+<ul>
+<li>A.各派生类的析构函数均自动为虚函数;</li>
+<li>B.派生类的析构函数与基类析构函数不同名，故不是虚函数;</li>
+<li>C:每个派生类的析构函数都必须声明为虚函数;</li>
+<li>D.只有基类的析构函数是虚函数。</li>
+</ul>
+<ol start="15">
+<li>派生类的对象可以访间()。</li>
+</ol>
+<ul>
+<li>A.公有继承的基类的公有成员</li>
+<li>B.公有继承的基类的保护成员</li>
+<li>C.公有继承的基类的私有成员</li>
+<li>D.保护继承的基类的公有成员</li>
+</ul>
+<ol start="16">
+<li>在创建派生类对象时，构造函数的执行顺序是()</li>
+</ol>
+<ul>
+<li>A.对象成员构造函数、基类构造函数、派生类本身的构造函数</li>
+<li>B.派生类本身的构造函数、基类构造函数、对象成员构造函数</li>
+<li>C.基类构造雨数、派生类本身的构造函数、对象成员构造函数</li>
+<li>D.基类构造函数、对象成员构造函数、派生类本身的构造函数</li>
+</ul>
+<p>17.下面函数原型声明中，声明fun为纯虚函数的是()</p>
+<ul>
+<li>A.void fun0=0:</li>
+<li>B.virtual void fun()=0;</li>
+<li>C.virtual void fun();</li>
+<li>D.virtual void fun(){};</li>
+</ul>
+<ol start="18">
+<li>一个类可以有多个构造函数，这些构造函数之间的关系是()</li>
+</ol>
+<ul>
+<li>A.重载</li>
+<li>B.重复</li>
+<li>C.拷贝</li>
+<li>D.覆盖</li>
+</ul>
+<ol start="19">
+<li>下列对于int *pa[5]的描述，正确的是()</li>
+</ol>
+<ul>
+<li>A.pa是一个指向数组的指针，所指向的数组是5个int 型元素</li>
+<li>B.pa是一个指向某数组中的第5个元素的指针，该元素是 int 型变量</li>
+<li>C.pa[5]表示某个数组的第5个元素的值</li>
+<li>D.pa是一个具有5个元素的指针数组，每个元素是一个int型指针</li>
+</ul>
+<ol start="20">
+<li>若有如下声明:class A{ int a;};则a是类A的()</li>
+</ol>
+<ul>
+<li>A.公有数据成员</li>
+<li>B.公有成员函数</li>
+<li>C.私有数据成员</li>
+<li>D.私有成员函数</li>
+</ul>
+<h3 id="二操作题写出伪代码即可">
+  二、操作题(写出伪代码即可)
+  <a class="anchor" href="#%e4%ba%8c%e6%93%8d%e4%bd%9c%e9%a2%98%e5%86%99%e5%87%ba%e4%bc%aa%e4%bb%a3%e7%a0%81%e5%8d%b3%e5%8f%af">#</a>
+</h3>
+<ol start="21">
+<li>在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下的顺序排列。请完成一个函数，输入这样一个二维数组和一个整数。判断整数是否在这个数组内</li>
+</ol>
+<p>举例</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>8</td>
+<td>9</td>
+</tr>
+<tr>
+<td>2</td>
+<td>4</td>
+<td>9</td>
+<td>12</td>
+</tr>
+<tr>
+<td>4</td>
+<td>7</td>
+<td>10</td>
+<td>13</td>
+</tr>
+<tr>
+<td>6</td>
+<td>8</td>
+<td>11</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<p>输入7，返回true,输入5返回false</p>
+<ol start="22">
+<li>给出一个字符类型的数组 word,请在单词间做边序。只需做到单词顺序逆序即可，对空格的位置没特别要求。</li>
+</ol>
+<p>举例:如果word为&quot;i like unreal engine”,调整后的结果为engineunreal like i</p>
+<ol start="23">
+<li>
+<p>给定一个整形数组arr，返问排序后的相邻两数的最人差值,如果arr的长度为N，请让你的算法做到时间复杂度为0(N)例:arr=[9,3,1,10].如果排序，结果为[1,3,9,4],9和3的差为最大差值，因此返回6
+arr=[1,1,1,1]返回0</p>
+</li>
+<li>
+<p>在二维坐标系中，所有的值都是 double类型那么一个三角形可以由3个点来代表，给定任意三个点代表的三角形，在给定一个点(x,y),判断(x,y)是否在三角形中</p>
+</li>
+</ol>
+<h2 id="虚幻引擎基础">
+  虚幻引擎基础
+  <a class="anchor" href="#%e8%99%9a%e5%b9%bb%e5%bc%95%e6%93%8e%e5%9f%ba%e7%a1%80">#</a>
+</h2>
+<h3 id="简答题">
+  简答题
+  <a class="anchor" href="#%e7%ae%80%e7%ad%94%e9%a2%98">#</a>
+</h3>
+<ol>
+<li>请简述GameMode, GameState, PlayerState. PlayerController, Pawn 的功能,和相互的关系：</li>
+<li>Gamelnstance 的功能有哪些，一共可以存在多少个?</li>
+<li>Selector、Sequence的节点功能?</li>
+<li>在C++和蓝图中如何打印调试信息，c++请写出代码，蓝图请写出节点名称。</li>
+<li>UObject和AActor有什么区别？</li>
+<li>BlueprintlmplementableEvent 和BlueprintNativeEvent 的区别</li>
+<li>如何在c++中实现Run On Server的函数声明并且在蓝图可调用?</li>
+</ol>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#c基础">C++基础</a>
+      <ul>
+        <li><a href="#一选择题">一、选择题</a></li>
+        <li><a href="#二操作题写出伪代码即可">二、操作题(写出伪代码即可)</a></li>
+      </ul>
+    </li>
+    <li><a href="#虚幻引擎基础">虚幻引擎基础</a>
+      <ul>
+        <li><a href="#简答题">简答题</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="常见问题进行梳理带答案#以下为某同学将常见问题整理后，预留答案并分享1、点乘叉乘意义#点乘： 按照说法是向量a在b向量上的投影。 一般根据点乘来判断是否是垂直（0），两向量的相似度(夹角越小，越相似）等；但我在使用中更多是进行反三角计算角度。
+叉乘： 按照说法是a，b向量叉乘得到的新向量C垂直于a，b向量所在的平面，如果为0，说明两向量是平行的。 一般我用于计算法线向量。
+2、ue中，正向是坐标系中的哪个轴#UE4的X轴是前方。 UE4中，Rotation的X是翻滚角Roll,围绕X轴旋转。Y是俯仰角pitch，围绕Y轴旋转。Z当然是偏航角yaw了，围绕Z轴。
+3、在场景中创建actor的方法#使用SpawnActor方法根据类生成Actor
+4、向蓝图暴露变量的宏是哪个？#EditAnywhere： 表示此属性可以通过属性窗口，原型和实例进行编辑（原型指的是类模板，实例指的是具体的对象实例）
+BlueprintReadWrite： 设置属性为蓝图读写。会在蓝图脚本中为被修饰的变量提供 Get 和 Set 方法
+5、ue中如何创建uobject对象#调用 NewObject() 函数来创建 UObject 对象
+6、阐述下gamemode在ue框架中的意义#一个游戏世界的mode，规则，逻辑。 游戏的规则,包括玩家如何加入游戏,能否暂停游戏,地图切换,胜利的条件等.一般一个Level下只有一个GameMode.在多玩家游戏中,GameMode仅存于服务器端.
+主要功能有： Class登记、 游戏内实体的Spawn、 游戏的进度、 Level的切换、 多人游戏的步调同步
+7、如何使用charactermovement飞行？#Character 的 setMovementMode 设置flying
+8、fstring,fname,ftext的使用场景举例下#FName： FName这个字符串类是用来给某个东西命名（Name）的，也就是说作为一个东西的ID。这里说的东西可以是编辑器Content浏览窗口里看到的各种资源，可以是动态材质实例里的某个可设置的参数，还可以是模型骨架中某个具体的骨骼，以及比如角色mesh里用来attach武器的socket。 当FName对象创建时，会根据字符串内容计算出一个hash值，并根据这个hash值把原始的字符串存到一张hash表里。FName对象里会记录自己所在的hash表的索引值，这样在实现比较逻辑时，它就不需要比较字符串内容，而是直接比较索引值是否相等。另外FName对象为不可变对象（immutable），即它被创建后就不能被修改了。它的这种只读属性使得它是天然的线程安全的。 需要注意的是FName是不区分大小写的。
+FText： 在你的游戏中玩家所能见到的文本都应该用FText来做，比如在UI上的文本显示。总而言之，假如你希望利用这个实验性的功能来方便的实现多语言支持，那么就用FText。
+FString： 它创建后是可修改的（mutable）。它提供大量操作字符串的方法，比如将字符串倒序，获取某个子串等。在你的程序内部，做比如拼装一个URL等逻辑时就会用到它。需要注意的是，因为它的可修改特性，它对性能不是那么的友好，另外在线程间共享时需要很注意。
+9、cpp中动态库和静态库区别#二者的不同点在于代码被载入的时刻不同。
+静态库在程序编译时会被连接到目标代码中，程序运行时将不再需要该静态库，因此体积较大。 动态库在程序编译时并不会被连接到目标代码中，而是在程序运行是才被载入，因此在程序运行时还需要动态库存在，因此代码体积较小。 动态库的好处是，不同的应用程序如果调用相同的库，那么在内存里只需要有一份该共享库的实例。
+10、cpp中指针是不是数据结构#不是">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="整理带答案" />
+<meta property="og:description" content="常见问题进行梳理带答案#以下为某同学将常见问题整理后，预留答案并分享1、点乘叉乘意义#点乘： 按照说法是向量a在b向量上的投影。 一般根据点乘来判断是否是垂直（0），两向量的相似度(夹角越小，越相似）等；但我在使用中更多是进行反三角计算角度。
+叉乘： 按照说法是a，b向量叉乘得到的新向量C垂直于a，b向量所在的平面，如果为0，说明两向量是平行的。 一般我用于计算法线向量。
+2、ue中，正向是坐标系中的哪个轴#UE4的X轴是前方。 UE4中，Rotation的X是翻滚角Roll,围绕X轴旋转。Y是俯仰角pitch，围绕Y轴旋转。Z当然是偏航角yaw了，围绕Z轴。
+3、在场景中创建actor的方法#使用SpawnActor方法根据类生成Actor
+4、向蓝图暴露变量的宏是哪个？#EditAnywhere： 表示此属性可以通过属性窗口，原型和实例进行编辑（原型指的是类模板，实例指的是具体的对象实例）
+BlueprintReadWrite： 设置属性为蓝图读写。会在蓝图脚本中为被修饰的变量提供 Get 和 Set 方法
+5、ue中如何创建uobject对象#调用 NewObject() 函数来创建 UObject 对象
+6、阐述下gamemode在ue框架中的意义#一个游戏世界的mode，规则，逻辑。 游戏的规则,包括玩家如何加入游戏,能否暂停游戏,地图切换,胜利的条件等.一般一个Level下只有一个GameMode.在多玩家游戏中,GameMode仅存于服务器端.
+主要功能有： Class登记、 游戏内实体的Spawn、 游戏的进度、 Level的切换、 多人游戏的步调同步
+7、如何使用charactermovement飞行？#Character 的 setMovementMode 设置flying
+8、fstring,fname,ftext的使用场景举例下#FName： FName这个字符串类是用来给某个东西命名（Name）的，也就是说作为一个东西的ID。这里说的东西可以是编辑器Content浏览窗口里看到的各种资源，可以是动态材质实例里的某个可设置的参数，还可以是模型骨架中某个具体的骨骼，以及比如角色mesh里用来attach武器的socket。 当FName对象创建时，会根据字符串内容计算出一个hash值，并根据这个hash值把原始的字符串存到一张hash表里。FName对象里会记录自己所在的hash表的索引值，这样在实现比较逻辑时，它就不需要比较字符串内容，而是直接比较索引值是否相等。另外FName对象为不可变对象（immutable），即它被创建后就不能被修改了。它的这种只读属性使得它是天然的线程安全的。 需要注意的是FName是不区分大小写的。
+FText： 在你的游戏中玩家所能见到的文本都应该用FText来做，比如在UI上的文本显示。总而言之，假如你希望利用这个实验性的功能来方便的实现多语言支持，那么就用FText。
+FString： 它创建后是可修改的（mutable）。它提供大量操作字符串的方法，比如将字符串倒序，获取某个子串等。在你的程序内部，做比如拼装一个URL等逻辑时就会用到它。需要注意的是，因为它的可修改特性，它对性能不是那么的友好，另外在线程间共享时需要很注意。
+9、cpp中动态库和静态库区别#二者的不同点在于代码被载入的时刻不同。
+静态库在程序编译时会被连接到目标代码中，程序运行时将不再需要该静态库，因此体积较大。 动态库在程序编译时并不会被连接到目标代码中，而是在程序运行是才被载入，因此在程序运行时还需要动态库存在，因此代码体积较小。 动态库的好处是，不同的应用程序如果调用相同的库，那么在内存里只需要有一份该共享库的实例。
+10、cpp中指针是不是数据结构#不是" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/docs/interview/qa/qha/" /><meta property="article:section" content="docs" />
+
+
+
+<title>整理带答案 | 虚幻引擎资料整理🏆</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.8e0348f3b41fafa0106f0457e7282e446af2abf421ecf9617e65d36305748ccf.css" integrity="sha256-jgNI87Qfr6AQbwRX5yguRGryq/Qh7PlhfmXTYwV0jM8=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.1057937f0dcc23977e027794aa6ebb81e1bee61ea3d0573b8c6e7438462a69c6.js" integrity="sha256-EFeTfw3MI5d&#43;AneUqm67geG&#43;5h6j0Fc7jG50OEYqacY=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?cd2548ec3e7fddf6e77bfef48762fbd4";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>虚幻引擎资料整理🏆</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>企业面试题</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fb675c8699e61fdda47a85ce174c4d27" class="toggle" checked />
+    <label for="section-fb675c8699e61fdda47a85ce174c4d27" class="flex justify-between">
+      <a role="button" class="">问答题</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/qa/basequestion/" class="">常见问题</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/qa/qha/" class="active">整理带答案</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/qa/anyone/" class="">零散整理</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f23b051264b0e3f88e34022c158433f4" class="toggle"  />
+    <label for="section-f23b051264b0e3f88e34022c158433f4" class="flex justify-between">
+      <a role="button" class="">笔试题</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/dl/" class="">某公司笔试（1）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/nc/" class="">某公司笔试（10）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/gamegou/" class="">某公司笔试（2）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/zy/" class="">某公司笔试（3）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/gx/" class="">某公司笔试（4）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/zl/" class="">某公司笔试（5）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/yh/" class="">某公司笔试（6）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/hx/" class="">某公司笔试（7）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/rt/" class="">某公司笔试（8）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/written/cpp/" class="">某公司笔试（9）</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c34f1a03e6c6a01b68314c39b2d1e99b" class="toggle"  />
+    <label for="section-c34f1a03e6c6a01b68314c39b2d1e99b" class="flex justify-between">
+      <a role="button" class="">操作题</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/operation/op1/" class="">操作题</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>聊天服务器</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/chatserver/scsproto/" class="">SCS服务器</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://pome.cc"  target="_blank" rel="noopener">
+        🎁 Pome
+      </a>
+  </li>
+  
+  <li>
+    <a href="http://share.uejoy.com"  target="_blank" rel="noopener">
+        🍔网盘资源
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>整理带答案</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#常见问题进行梳理带答案">常见问题进行梳理带答案</a>
+      <ul>
+        <li><a href="#1点乘叉乘意义"><strong>1、点乘叉乘意义</strong></a></li>
+        <li><a href="#2ue中正向是坐标系中的哪个轴"><strong>2、ue中，正向是坐标系中的哪个轴</strong></a></li>
+        <li><a href="#3在场景中创建actor的方法"><strong>3、在场景中创建actor的方法</strong></a></li>
+        <li><a href="#4向蓝图暴露变量的宏是哪个"><strong>4、向蓝图暴露变量的宏是哪个？</strong></a></li>
+        <li><a href="#5ue中如何创建uobject对象"><strong>5、ue中如何创建uobject对象</strong></a></li>
+        <li><a href="#6阐述下gamemode在ue框架中的意义"><strong>6、阐述下gamemode在ue框架中的意义</strong></a></li>
+        <li><a href="#7如何使用charactermovement飞行"><strong>7、如何使用charactermovement飞行？</strong></a></li>
+        <li><a href="#8fstringfnameftext的使用场景举例下"><strong>8、fstring,fname,ftext的使用场景举例下</strong></a></li>
+        <li><a href="#9cpp中动态库和静态库区别"><strong>9、cpp中动态库和静态库区别</strong></a></li>
+        <li><a href="#10cpp中指针是不是数据结构"><strong>10、cpp中指针是不是数据结构</strong></a></li>
+        <li><a href="#11cpp中定义常量使用宏还是const"><strong>11、cpp中定义常量使用宏还是const</strong></a></li>
+        <li><a href="#12简单阐述下你认为运算符重载的意义"><strong>12、简单阐述下你认为运算符重载的意义</strong></a></li>
+        <li><a href="#13阐述下设计模式中单例模式的意义"><strong>13、阐述下设计模式中单例模式的意义</strong></a></li>
+        <li><a href="#14说一说你使用过得版本控制工具描述下使用中的问题"><strong>14、说一说你使用过得版本控制工具，描述下使用中的问题</strong></a></li>
+        <li><a href="#15cpp中友元的优点和缺点"><strong>15、cpp中，友元的优点和缺点</strong></a></li>
+        <li><a href="#16面相对象的特性"><strong>16、面相对象的特性</strong></a></li>
+        <li><a href="#17面相对象的设计原则-六个"><strong>17、面相对象的设计原则 六个</strong></a></li>
+        <li><a href="#17阐述下智能指针的实现手段和意义"><strong>17、阐述下智能指针的实现手段和意义</strong></a></li>
+        <li><a href="#18说出你认识的设计模式阐述他们的特点不少于五个"><strong>18、说出你认识的设计模式，阐述他们的特点，不少于五个</strong></a></li>
+        <li><a href="#19针对接口编程的意义"><strong>19、针对接口编程的意义</strong></a></li>
+        <li><a href="#20数组指针和指针数组区别"><strong>20、数组指针和指针数组区别</strong></a></li>
+        <li><a href="#21指针数组加减一是否有意义为什么"><strong>21、指针数组加减一是否有意义？为什么？</strong></a></li>
+        <li><a href="#22阐述下二分查找法的时间复杂度是什么"><strong>22、阐述下二分查找法的时间复杂度是什么？</strong></a></li>
+        <li><a href="#23数据结构中栈和队列区别"><strong>23、数据结构中栈和队列区别</strong></a></li>
+        <li><a href="#24cpp中头文件的意义"><strong>24、cpp中头文件的意义</strong></a></li>
+        <li><a href="#25内联函数的意义"><strong>25、内联函数的意义</strong></a></li>
+        <li><a href="#26斐波那契数列"><strong>26、斐波那契数列</strong></a></li>
+        <li><a href="#27动态规划"><strong>27、动态规划</strong></a></li>
+        <li><a href="#28数组排序"><strong>28、数组排序</strong></a></li>
+        <li><a href="#29正态分布"><strong>29、正态分布</strong></a></li>
+        <li><a href="#30排序算法"><strong>30、排序算法</strong></a></li>
+        <li><a href="#31二叉树"><strong>31、二叉树</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#32红黑树"><strong>32、红黑树</strong></a></li>
+    <li><a href="#33平衡二叉树"><strong>33、平衡二叉树</strong></a></li>
+    <li><a href="#34散列"><strong>34、散列</strong></a></li>
+    <li><a href="#35cdo-class-default-object"><strong>35、CDO class default object</strong></a></li>
+    <li><a href="#36虚继承"><strong>36、虚继承</strong></a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h2 id="常见问题进行梳理带答案">
+  常见问题进行梳理带答案
+  <a class="anchor" href="#%e5%b8%b8%e8%a7%81%e9%97%ae%e9%a2%98%e8%bf%9b%e8%a1%8c%e6%a2%b3%e7%90%86%e5%b8%a6%e7%ad%94%e6%a1%88">#</a>
+</h2>
+<blockquote class="book-hint info">
+  以下为某同学将常见问题整理后，预留答案并分享
+</blockquote>
+
+<h3 id="1点乘叉乘意义">
+  <strong>1、点乘叉乘意义</strong>
+  <a class="anchor" href="#1%e7%82%b9%e4%b9%98%e5%8f%89%e4%b9%98%e6%84%8f%e4%b9%89">#</a>
+</h3>
+<p>点乘：
+按照说法是向量a在b向量上的投影。
+一般根据点乘来判断是否是垂直（0），两向量的相似度(夹角越小，越相似）等；但我在使用中更多是进行反三角计算角度。</p>
+<p>叉乘：
+按照说法是a，b向量叉乘得到的新向量C垂直于a，b向量所在的平面，如果为0，说明两向量是平行的。 一般我用于计算法线向量。</p>
+<h3 id="2ue中正向是坐标系中的哪个轴">
+  <strong>2、ue中，正向是坐标系中的哪个轴</strong>
+  <a class="anchor" href="#2ue%e4%b8%ad%e6%ad%a3%e5%90%91%e6%98%af%e5%9d%90%e6%a0%87%e7%b3%bb%e4%b8%ad%e7%9a%84%e5%93%aa%e4%b8%aa%e8%bd%b4">#</a>
+</h3>
+<p>UE4的X轴是前方。
+UE4中，Rotation的X是翻滚角Roll,围绕X轴旋转。Y是俯仰角pitch，围绕Y轴旋转。Z当然是偏航角yaw了，围绕Z轴。</p>
+<h3 id="3在场景中创建actor的方法">
+  <strong>3、在场景中创建actor的方法</strong>
+  <a class="anchor" href="#3%e5%9c%a8%e5%9c%ba%e6%99%af%e4%b8%ad%e5%88%9b%e5%bb%baactor%e7%9a%84%e6%96%b9%e6%b3%95">#</a>
+</h3>
+<p>使用SpawnActor方法根据类生成Actor</p>
+<h3 id="4向蓝图暴露变量的宏是哪个">
+  <strong>4、向蓝图暴露变量的宏是哪个？</strong>
+  <a class="anchor" href="#4%e5%90%91%e8%93%9d%e5%9b%be%e6%9a%b4%e9%9c%b2%e5%8f%98%e9%87%8f%e7%9a%84%e5%ae%8f%e6%98%af%e5%93%aa%e4%b8%aa">#</a>
+</h3>
+<p>EditAnywhere：
+表示此属性可以通过属性窗口，原型和实例进行编辑（原型指的是类模板，实例指的是具体的对象实例）</p>
+<p>BlueprintReadWrite：
+设置属性为蓝图读写。会在蓝图脚本中为被修饰的变量提供 Get 和 Set 方法</p>
+<h3 id="5ue中如何创建uobject对象">
+  <strong>5、ue中如何创建uobject对象</strong>
+  <a class="anchor" href="#5ue%e4%b8%ad%e5%a6%82%e4%bd%95%e5%88%9b%e5%bb%bauobject%e5%af%b9%e8%b1%a1">#</a>
+</h3>
+<p>调用 NewObject<!-- raw HTML omitted -->() 函数来创建 UObject 对象</p>
+<h3 id="6阐述下gamemode在ue框架中的意义">
+  <strong>6、阐述下gamemode在ue框架中的意义</strong>
+  <a class="anchor" href="#6%e9%98%90%e8%bf%b0%e4%b8%8bgamemode%e5%9c%a8ue%e6%a1%86%e6%9e%b6%e4%b8%ad%e7%9a%84%e6%84%8f%e4%b9%89">#</a>
+</h3>
+<p>一个游戏世界的mode，规则，逻辑。
+游戏的规则,包括玩家如何加入游戏,能否暂停游戏,地图切换,胜利的条件等.一般一个Level下只有一个GameMode.在多玩家游戏中,GameMode仅存于服务器端.</p>
+<p>主要功能有：
+Class登记、
+游戏内实体的Spawn、
+游戏的进度、
+Level的切换、
+多人游戏的步调同步</p>
+<h3 id="7如何使用charactermovement飞行">
+  <strong>7、如何使用charactermovement飞行？</strong>
+  <a class="anchor" href="#7%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8charactermovement%e9%a3%9e%e8%a1%8c">#</a>
+</h3>
+<p>Character 的 setMovementMode 设置flying</p>
+<h3 id="8fstringfnameftext的使用场景举例下">
+  <strong>8、fstring,fname,ftext的使用场景举例下</strong>
+  <a class="anchor" href="#8fstringfnameftext%e7%9a%84%e4%bd%bf%e7%94%a8%e5%9c%ba%e6%99%af%e4%b8%be%e4%be%8b%e4%b8%8b">#</a>
+</h3>
+<p><strong>FName</strong>：
+FName这个字符串类是用来给某个东西命名（Name）的，也就是说作为一个东西的ID。这里说的东西可以是编辑器Content浏览窗口里看到的各种资源，可以是动态材质实例里的某个可设置的参数，还可以是模型骨架中某个具体的骨骼，以及比如角色mesh里用来attach武器的socket。
+当FName对象创建时，会根据字符串内容计算出一个hash值，并根据这个hash值把原始的字符串存到一张hash表里。FName对象里会记录自己所在的hash表的索引值，这样在实现比较逻辑时，它就不需要比较字符串内容，而是直接比较索引值是否相等。另外FName对象为不可变对象（immutable），即它被创建后就不能被修改了。它的这种只读属性使得它是天然的线程安全的。
+需要注意的是FName是不区分大小写的。</p>
+<p><strong>FText</strong>：
+在你的游戏中玩家所能见到的文本都应该用FText来做，比如在UI上的文本显示。总而言之，假如你希望利用这个实验性的功能来方便的实现多语言支持，那么就用FText。</p>
+<p><strong>FString</strong>：
+它创建后是可修改的（mutable）。它提供大量操作字符串的方法，比如将字符串倒序，获取某个子串等。在你的程序内部，做比如拼装一个URL等逻辑时就会用到它。需要注意的是，因为它的可修改特性，它对性能不是那么的友好，另外在线程间共享时需要很注意。</p>
+<h3 id="9cpp中动态库和静态库区别">
+  <strong>9、cpp中动态库和静态库区别</strong>
+  <a class="anchor" href="#9cpp%e4%b8%ad%e5%8a%a8%e6%80%81%e5%ba%93%e5%92%8c%e9%9d%99%e6%80%81%e5%ba%93%e5%8c%ba%e5%88%ab">#</a>
+</h3>
+<p>二者的不同点在于代码被载入的时刻不同。</p>
+<p>静态库在程序编译时会被连接到目标代码中，程序运行时将不再需要该静态库，因此体积较大。
+动态库在程序编译时并不会被连接到目标代码中，而是在程序运行是才被载入，因此在程序运行时还需要动态库存在，因此代码体积较小。
+动态库的好处是，不同的应用程序如果调用相同的库，那么在内存里只需要有一份该共享库的实例。</p>
+<h3 id="10cpp中指针是不是数据结构">
+  <strong>10、cpp中指针是不是数据结构</strong>
+  <a class="anchor" href="#10cpp%e4%b8%ad%e6%8c%87%e9%92%88%e6%98%af%e4%b8%8d%e6%98%af%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84">#</a>
+</h3>
+<p>不是</p>
+<h3 id="11cpp中定义常量使用宏还是const">
+  <strong>11、cpp中定义常量使用宏还是const</strong>
+  <a class="anchor" href="#11cpp%e4%b8%ad%e5%ae%9a%e4%b9%89%e5%b8%b8%e9%87%8f%e4%bd%bf%e7%94%a8%e5%ae%8f%e8%bf%98%e6%98%afconst">#</a>
+</h3>
+<p>都可以</p>
+<ul>
+<li>类型和安全检查不同</li>
+<li>宏定义是字符替换，没有数据类型的区别，同时这种替换没有类型安全检查，可能产生边际效应等错误；</li>
+<li>const常量是常量的声明，有类型区别，需要在编译阶段进行类型检查</li>
+<li>编译器处理不同: 宏定义是一个&quot;编译时&quot;概念，在预处理阶段展开，不能对宏定义进行调试，生命周期结束与编译时期；</li>
+<li>const常量是一个&quot;运行时&quot;概念，在程序运行使用，类似于一个只读行数据</li>
+<li>存储方式不同:  宏定义是直接替换，不会分配内存，存储与程序的代码段中；</li>
+<li>const常量需要进行内存分配，存储与程序的数据段中</li>
+<li>是否可以做函数参数
+宏定义不能作为参数传递给函数:const常量可以在函数的参数列表中出现</li>
+</ul>
+<h3 id="12简单阐述下你认为运算符重载的意义">
+  <strong>12、简单阐述下你认为运算符重载的意义</strong>
+  <a class="anchor" href="#12%e7%ae%80%e5%8d%95%e9%98%90%e8%bf%b0%e4%b8%8b%e4%bd%a0%e8%ae%a4%e4%b8%ba%e8%bf%90%e7%ae%97%e7%ac%a6%e9%87%8d%e8%bd%bd%e7%9a%84%e6%84%8f%e4%b9%89">#</a>
+</h3>
+<p>使程序更加简洁，增强程序的易读性。</p>
+<h3 id="13阐述下设计模式中单例模式的意义">
+  <strong>13、阐述下设计模式中单例模式的意义</strong>
+  <a class="anchor" href="#13%e9%98%90%e8%bf%b0%e4%b8%8b%e8%ae%be%e8%ae%a1%e6%a8%a1%e5%bc%8f%e4%b8%ad%e5%8d%95%e4%be%8b%e6%a8%a1%e5%bc%8f%e7%9a%84%e6%84%8f%e4%b9%89">#</a>
+</h3>
+<p>单例模式
+对于系统中的某些类来说，只有一个实例很重要，例如，一个游戏数据内容，整个游戏只有这么一份，在游戏进行到不同部分时，需要记录或访问该数据游戏数据。针对这种情况如果某个类只能有一个实例那么则满足我们的需求，我们将满足某个类只有一个实例的代码设计方式称为单例模式。</p>
+<p>单例模式的三要点：</p>
+<ul>
+<li>某个类只能有一个实例</li>
+<li>必须自行创建这个实例</li>
+<li>必须自行向外界提供这个实例</li>
+</ul>
+<p>单例模式的实现步骤</p>
+<ul>
+<li>默认构造使用private修饰</li>
+<li>内建该类的静态实例</li>
+<li>静态构造方法中给该静态实例做初始化</li>
+<li>对外提供获取该静态实例的方法</li>
+</ul>
+<h3 id="14说一说你使用过得版本控制工具描述下使用中的问题">
+  <strong>14、说一说你使用过得版本控制工具，描述下使用中的问题</strong>
+  <a class="anchor" href="#14%e8%af%b4%e4%b8%80%e8%af%b4%e4%bd%a0%e4%bd%bf%e7%94%a8%e8%bf%87%e5%be%97%e7%89%88%e6%9c%ac%e6%8e%a7%e5%88%b6%e5%b7%a5%e5%85%b7%e6%8f%8f%e8%bf%b0%e4%b8%8b%e4%bd%bf%e7%94%a8%e4%b8%ad%e7%9a%84%e9%97%ae%e9%a2%98">#</a>
+</h3>
+<h4 id="项目的逻辑结构混乱">
+  项目的逻辑结构混乱
+  <a class="anchor" href="#%e9%a1%b9%e7%9b%ae%e7%9a%84%e9%80%bb%e8%be%91%e7%bb%93%e6%9e%84%e6%b7%b7%e4%b9%b1">#</a>
+</h4>
+<p>比如：开始时对需求不明确，导致软件本身结构混乱，使在定义软件的逻辑结构时，时常变化。又如：一个团队中，大家各自都之关心自己负责的模块，每个人各自制定适合自己的逻辑结构，导致最终的项目结构是一个大杂烩（多个结构组合而成）。久而久之，就会导致软件管理混乱，增加维护负担，反而降低效率。结构中，有的目录可能是“死角”，永远都没有使用到；有的目录可能是重复的，造成冗余；有的目录可能大家同时在用，各自对代码的修改彼此影响。</p>
+<h4 id="多人修改同一个文件">
+  多人修改同一个文件
+  <a class="anchor" href="#%e5%a4%9a%e4%ba%ba%e4%bf%ae%e6%94%b9%e5%90%8c%e4%b8%80%e4%b8%aa%e6%96%87%e4%bb%b6">#</a>
+</h4>
+<p>在一般情况下，确保在任何时刻都只有一个成员对某个特定的文件进行修改，这样可以防止文件被其他成员的修改意外更新。为了适应多人同时修改同一个文件的情况，版本控制管理员也可以改变此缺省设置以允许对单个文件同时有多个签出（checkout），并且仍禁止对他人的修改进行覆盖。</p>
+<h4 id="本地版本和服务器版本不一致">
+  本地版本和服务器版本不一致
+  <a class="anchor" href="#%e6%9c%ac%e5%9c%b0%e7%89%88%e6%9c%ac%e5%92%8c%e6%9c%8d%e5%8a%a1%e5%99%a8%e7%89%88%e6%9c%ac%e4%b8%8d%e4%b8%80%e8%87%b4">#</a>
+</h4>
+<p>有时会碰到这样的情形，开发人员在从服务器那里更新本地版本时，只更新了部分内容，导致本地编译不通过。应该时刻注意保持本地版本和服务器版本的一致性，这是一个认识的问题，因为服务器版本才是真正唯一有效的。多个程序员还必须注意不要为了解决同一个问题而浪费时间。对某项功能的实现，由于本地和服务器的不一致，导致大家重复实现。</p>
+<h4 id="用户权限混乱">
+  用户权限混乱
+  <a class="anchor" href="#%e7%94%a8%e6%88%b7%e6%9d%83%e9%99%90%e6%b7%b7%e4%b9%b1">#</a>
+</h4>
+<p>对于所有开发人员和各自负责的模块，根据实际情况，制定合理的用户权限，哪些人对哪些目录只有可读权限，哪些人对哪些目录有读写权限。不应该出现所有人都是管理员这样的极端情况。</p>
+<h4 id="手工修改文件的只读标记">
+  手工修改文件的只读标记
+  <a class="anchor" href="#%e6%89%8b%e5%b7%a5%e4%bf%ae%e6%94%b9%e6%96%87%e4%bb%b6%e7%9a%84%e5%8f%aa%e8%af%bb%e6%a0%87%e8%ae%b0">#</a>
+</h4>
+<p>为了防止你对没有签出的文件进行修改，版本控制管理工具会将这些文件指定并标明为只读文件。当你签出一个文件时，只读标记便被删去。一种经常出现的不良习惯是，为了图省事，在没有签出文件时便试图修改文件，当发现文件不能保存时，便手工修改其只读标记。这是一切混乱的“源头”，它将导致不一致、有效内容被覆盖等问题。</p>
+<h4 id="没有指定工作目录或存在多个工作目录">
+  没有指定工作目录或存在多个工作目录
+  <a class="anchor" href="#%e6%b2%a1%e6%9c%89%e6%8c%87%e5%ae%9a%e5%b7%a5%e4%bd%9c%e7%9b%ae%e5%bd%95%e6%88%96%e5%ad%98%e5%9c%a8%e5%a4%9a%e4%b8%aa%e5%b7%a5%e4%bd%9c%e7%9b%ae%e5%bd%95">#</a>
+</h4>
+<p>每个开发人员必须拥有一个独一无二的工作目录，它不能与任何其他开发人员共享</p>
+<h4 id="频繁的签入或很少签入">
+  频繁的签入或很少签入
+  <a class="anchor" href="#%e9%a2%91%e7%b9%81%e7%9a%84%e7%ad%be%e5%85%a5%e6%88%96%e5%be%88%e5%b0%91%e7%ad%be%e5%85%a5">#</a>
+</h4>
+<p>掌握好签入的时间，比如一天，或者在其他人需要的时候。并非每次微小的改动都需要马上签入，也并非每改完一个文件都将其签入，但也不要忘记签入。</p>
+<h4 id="从服务器上获取最近版本时的疏忽">
+  从服务器上获取最近版本时的疏忽
+  <a class="anchor" href="#%e4%bb%8e%e6%9c%8d%e5%8a%a1%e5%99%a8%e4%b8%8a%e8%8e%b7%e5%8f%96%e6%9c%80%e8%bf%91%e7%89%88%e6%9c%ac%e6%97%b6%e7%9a%84%e7%96%8f%e5%bf%bd">#</a>
+</h4>
+<p>如果选择获取当前已经签出并且已经修改的文件最新版本，操作时必须非常小心。如果你选择取代文件，你将用最近一次签入的文件版本改写你做的修改，这可能会使你所做的工作白费。大多数情况下，最保险的做法是选定Apply To All Items，并选择Leave。</p>
+<h3 id="15cpp中友元的优点和缺点">
+  <strong>15、cpp中，友元的优点和缺点</strong>
+  <a class="anchor" href="#15cpp%e4%b8%ad%e5%8f%8b%e5%85%83%e7%9a%84%e4%bc%98%e7%82%b9%e5%92%8c%e7%bc%ba%e7%82%b9">#</a>
+</h3>
+<ul>
+<li>
+<p>优点
+提高了数据的共享性,加强了函数与函数之间,类与类之间的相互联系,提高程序的效率</p>
+</li>
+<li>
+<p>缺点
+破坏了数据隐藏和数据封装,如果将类的封装比喻成一堵墙的话，那么友元机制就像墙上开了一个门。</p>
+</li>
+</ul>
+<h3 id="16面相对象的特性">
+  <strong>16、面相对象的特性</strong>
+  <a class="anchor" href="#16%e9%9d%a2%e7%9b%b8%e5%af%b9%e8%b1%a1%e7%9a%84%e7%89%b9%e6%80%a7">#</a>
+</h3>
+<ul>
+<li>封装
+封装是面向对象的特征之一，是对象和类概念的主要特性。封装就是把过程和数据包围起来，对数据的访问只能通过已定义的界面。如私有变量，用set，get方法获取。
+封装保证了模块具有较好的独立性，使得程序维护修改较为容易。对应用程序的修改仅限于类的内部，因而可以将应用程序修改带来的影响减少到最低限度。</li>
+<li>继承
+一种联结类的层次模型，并且允许和鼓励类的重用，提供一种明确表达共性的方法。对象的一个新类可以从现有的类中派生，这个过程称为类继承。新类继承了原始类的特性，新类称为原始类的派生类(子类)，原始类称为新类的基类(父类)。派生类可以从它的父类哪里继承方法和实例变量，并且类可以修改或增加新的方法使之更适合特殊的需要。因此可以说，继承为了重用父类代码，同时为实现多态性作准备。</li>
+<li>多态
+多态是指允许不同类的对象对同一消息做出响应。多态性包括参数化多态性和包含多态性。多态性语言具有灵活/抽象/行为共享/代码共享的优势，很好的解决了应用程序函数同名问题。总的来说，方法的重写，重载与动态链接构成多态性。
+动态链接 &ndash;&gt;对于父类中定义的方法，如果子类中重写了该方法，那么父类类型的引用将调用子类中的这个方法，这就是动态链接。</li>
+</ul>
+<h3 id="17面相对象的设计原则-六个">
+  <strong>17、面相对象的设计原则 六个</strong>
+  <a class="anchor" href="#17%e9%9d%a2%e7%9b%b8%e5%af%b9%e8%b1%a1%e7%9a%84%e8%ae%be%e8%ae%a1%e5%8e%9f%e5%88%99-%e5%85%ad%e4%b8%aa">#</a>
+</h3>
+<ol>
+<li>
+<p>单一职责原则,一个合理的类，应该仅有一个引起它变化的原因，即单一职责,就是设计的这个类功能应该只有一个;
+优点：消除耦合，减小因需求变化引起代码僵化</p>
+</li>
+<li>
+<p>开-闭原则，讲的是设计要对扩展有好的支持，而对修改要严格限制。即对扩展开放，对修改封闭。
+优点：降低了程序各部分之间的耦合性，其适应性、灵活性、稳定性都比较好。当已有软件系统需要增加新的功能时，不需要对作为系统基础的抽象层进行修改，只需要在原有基础上附加新的模块就能实现所需要添加的功能。</p>
+</li>
+<li>
+<p>里氏代换原则，很严格的原则，规则是“子类必须能够替换基类，否则不应当设计为其子类。”也就是说，一个软件实体如果使用的是一个父类的话，那么一定适用于其子类，而且它察觉不出父类对象和子类对象的区别。也就是说，在软件里面，把父类都替换成它的子类，程序的行为没有变化。
+优点：可以很容易的实现同一父类下各个子类的互换，而客户端可以毫不察觉。</p>
+</li>
+<li>
+<p>依赖倒换原则，“设计要依赖于抽象而不是具体化”。换句话说就是设计的时候我们要用抽象来思考，而不是一上来就开始划分我需要哪些哪些类，因为这些是具体。高层模块不应该依赖于底层模块，二者都应该依赖于抽象；抽象不应该依赖于细节，细节应该依赖于抽象。要针对接口编程，不要针对实现编程。
+优点：人的思维本身实际上就是很抽象的，我们分析问题的时候不是一下子就考虑到细节，而是很抽象的将整个问题都构思出来，所以面向抽象设计是符合人的思维的。另外这个原则会很好的支持（开闭原则）OCP，面向抽象的设计使我们能够不必太多依赖于实现，</p>
+</li>
+<li>
+<p>接口隔离原则，“将大的接口打散成多个小接口”，让系统解耦，从而容易重构，更改和重新部署。
+优点：会使一个软件系统功能扩展时，修改的压力不会传到别的对象那里。</p>
+</li>
+<li>
+<p>迪米特法则或最少知识原则，这个原则首次在Demeter系统中得到正式运用，所以定义为迪米特法则。它讲的是“一个对象应当尽可能少的去了解其他对象”。
+优点：消除耦合。</p>
+</li>
+</ol>
+<h3 id="17阐述下智能指针的实现手段和意义">
+  <strong>17、阐述下智能指针的实现手段和意义</strong>
+  <a class="anchor" href="#17%e9%98%90%e8%bf%b0%e4%b8%8b%e6%99%ba%e8%83%bd%e6%8c%87%e9%92%88%e7%9a%84%e5%ae%9e%e7%8e%b0%e6%89%8b%e6%ae%b5%e5%92%8c%e6%84%8f%e4%b9%89">#</a>
+</h3>
+<p>智能指针的一种通用实现技术是使用引用计数（reference count）。智能指针类将一个计数器与类指向的对象相关量，引用计数跟踪该类有多少个对象的指针指向同一个对象。</p>
+<ul>
+<li>
+<p>原理
+每次创建类的新对象时，初始化指针并将引用计数置位1；当对象作为另一对象的副本而创建时，拷贝构造函数拷贝拷贝并增加与之相应的引用计数：
+对一个对象进行赋值，赋值操作符减少左操作数所指对象的引用计数（如果引用计数变为0，则删除对象），并增加右操作数所指对象的引用计数；
+调用析构函数时，析构函数减少引用计数（如果引用计数减至0，则删除基础对象）。</p>
+</li>
+<li>
+<p>意义
+保证使用堆上对象的时候，对象一定会被释放，但只能释放一次，并且释放后指向该对象的指针应该马上归 0。</p>
+</li>
+</ul>
+<h3 id="18说出你认识的设计模式阐述他们的特点不少于五个">
+  <strong>18、说出你认识的设计模式，阐述他们的特点，不少于五个</strong>
+  <a class="anchor" href="#18%e8%af%b4%e5%87%ba%e4%bd%a0%e8%ae%a4%e8%af%86%e7%9a%84%e8%ae%be%e8%ae%a1%e6%a8%a1%e5%bc%8f%e9%98%90%e8%bf%b0%e4%bb%96%e4%bb%ac%e7%9a%84%e7%89%b9%e7%82%b9%e4%b8%8d%e5%b0%91%e4%ba%8e%e4%ba%94%e4%b8%aa">#</a>
+</h3>
+<ul>
+<li>工厂模式	用一个工厂方法或者类生成对象，来替换掉在在代码中直接new 对象的方式</li>
+<li>单例模式	构造方法私有化，通过静态的公有方法来获取实例对象</li>
+<li>注册树模式	将创建好的对象注册到全局树上面，是对象可以在任何地方被访问</li>
+<li>适配器模式	可以将截然不同的函数接口封装成统一的API</li>
+<li>策略模式	针对一组算法，将每一个算法封装到具有共同接口的独立的类中，从而使得它们可以相互替换</li>
+<li>数据对象映射模式	将对象和数据存储映射起来，对一个对象的操作会映射为对数据存储的操作</li>
+</ul>
+<h3 id="19针对接口编程的意义">
+  <strong>19、针对接口编程的意义</strong>
+  <a class="anchor" href="#19%e9%92%88%e5%af%b9%e6%8e%a5%e5%8f%a3%e7%bc%96%e7%a8%8b%e7%9a%84%e6%84%8f%e4%b9%89">#</a>
+</h3>
+<p>将具体逻辑与实现分开，减少了各个类之间的相互依赖，当各个类变化时，不需要对已经编写的系统进行改动，添加新的实现类就可以了，不在担心新改动的类对系统的其他模块造成影响。</p>
+<h3 id="20数组指针和指针数组区别">
+  <strong>20、数组指针和指针数组区别</strong>
+  <a class="anchor" href="#20%e6%95%b0%e7%bb%84%e6%8c%87%e9%92%88%e5%92%8c%e6%8c%87%e9%92%88%e6%95%b0%e7%bb%84%e5%8c%ba%e5%88%ab">#</a>
+</h3>
+<p>区别：
+数组指针只是一个指针变量，它占有内存中一个指针的存储空间。
+指针数组是多个指针变量，以数组形式存在内存当中，占有多个指针的存储空间。</p>
+<h3 id="21指针数组加减一是否有意义为什么">
+  <strong>21、指针数组加减一是否有意义？为什么？</strong>
+  <a class="anchor" href="#21%e6%8c%87%e9%92%88%e6%95%b0%e7%bb%84%e5%8a%a0%e5%87%8f%e4%b8%80%e6%98%af%e5%90%a6%e6%9c%89%e6%84%8f%e4%b9%89%e4%b8%ba%e4%bb%80%e4%b9%88">#</a>
+</h3>
+<p>有，加减一是地址的偏移，偏移的值是数组中一个元素的空间大小</p>
+<h3 id="22阐述下二分查找法的时间复杂度是什么">
+  <strong>22、阐述下二分查找法的时间复杂度是什么？</strong>
+  <a class="anchor" href="#22%e9%98%90%e8%bf%b0%e4%b8%8b%e4%ba%8c%e5%88%86%e6%9f%a5%e6%89%be%e6%b3%95%e7%9a%84%e6%97%b6%e9%97%b4%e5%a4%8d%e6%9d%82%e5%ba%a6%e6%98%af%e4%bb%80%e4%b9%88">#</a>
+</h3>
+<ul>
+<li>时间复杂度是说我们写的这段代码的运行时间</li>
+<li>空间复杂度则是在说这段代码运行所占用的内存空间大小。</li>
+</ul>
+<p>运用二分查找算法，在n个元素的数组中查找一个数，情况最遭时，需要(log2 n)步，所以二分查找的时间复杂度是O(log2 n)。
+时间复杂度描述的就是非酋附体时的情况；
+时间复杂度指的并非具体时间，而是操作数的增速。</p>
+<h3 id="23数据结构中栈和队列区别">
+  <strong>23、数据结构中栈和队列区别</strong>
+  <a class="anchor" href="#23%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e4%b8%ad%e6%a0%88%e5%92%8c%e9%98%9f%e5%88%97%e5%8c%ba%e5%88%ab">#</a>
+</h3>
+<h4 id="队列与栈的定义">
+  队列与栈的定义：
+  <a class="anchor" href="#%e9%98%9f%e5%88%97%e4%b8%8e%e6%a0%88%e7%9a%84%e5%ae%9a%e4%b9%89">#</a>
+</h4>
+<p>队列（Queue）：是限定只能在表的一端进行插入和在另一端进行删除操作的线性表；
+栈（Stack）：是限定只能在表的一端进行插入和删除操作的线性表。</p>
+<h4 id="队列与栈的区别">
+  队列与栈的区别
+  <a class="anchor" href="#%e9%98%9f%e5%88%97%e4%b8%8e%e6%a0%88%e7%9a%84%e5%8c%ba%e5%88%ab">#</a>
+</h4>
+<p>队列和栈是两种不同的数据结构。它们有以下区别：</p>
+<ul>
+<li>操作的名称不同。
+队列的插入称为入队，队列的删除称为出队。栈的插入称为进栈，栈的删除称为出栈。</li>
+<li>操作的限定不同。
+队列是在队尾入队，队头出队，即两边都可操作。而栈的进栈和出栈都是在栈顶进行的，无法对栈底直接进行操作。</li>
+<li>操作的规则不同。
+队列是先进先出（FIFO），即队列的修改是依先进先出的原则进行的。新来的成员总是加入队尾（不能从中间插入），每次离开的成员总是队列头上（不允许中途离队）。而栈为后进先出（LIFO）,即每次删除（出栈）的总是当前栈中最新的元素，即最后插入（进栈）的元素，而最先插入的被放在栈的底部，要到最后才能删除。</li>
+<li>遍历数据速度不同。
+队列是基于地址指针进行遍历，而且可以从头部或者尾部进行遍历，但不能同时遍历，无需开辟空间，因为在遍历的过程中不影响数据结构，所以遍历速度要快。栈是只能从顶部取数据，也就是说最先进入栈底的，需要遍历整个栈才能取出来，而且在遍历数据的同时需要为数据开辟临时空间，保持数据在遍历前的一致性。</li>
+</ul>
+<h3 id="24cpp中头文件的意义">
+  <strong>24、cpp中头文件的意义</strong>
+  <a class="anchor" href="#24cpp%e4%b8%ad%e5%a4%b4%e6%96%87%e4%bb%b6%e7%9a%84%e6%84%8f%e4%b9%89">#</a>
+</h3>
+<p>将函数和变量的声明跟定义分开</p>
+<p>当某一个.cpp源文件需要它们时，它们就可以通过一个宏命令 “#include”包含进这个.cpp文件中，从而把它们的内容合并到.cpp文件中去。</p>
+<h3 id="25内联函数的意义">
+  <strong>25、内联函数的意义</strong>
+  <a class="anchor" href="#25%e5%86%85%e8%81%94%e5%87%bd%e6%95%b0%e7%9a%84%e6%84%8f%e4%b9%89">#</a>
+</h3>
+<p>提高函数的执行效率。用关键字 inline 放在函数定义的前面即可将函数指定为内联函数，内联函数通常就是将它在程序中的每个调用点上“内联地”展开，</p>
+<h3 id="26斐波那契数列">
+  <strong>26、斐波那契数列</strong>
+  <a class="anchor" href="#26%e6%96%90%e6%b3%a2%e9%82%a3%e5%a5%91%e6%95%b0%e5%88%97">#</a>
+</h3>
+<p>这个数列从第3项开始，每一项都等于前两项之和。</p>
+<h3 id="27动态规划">
+  <strong>27、动态规划</strong>
+  <a class="anchor" href="#27%e5%8a%a8%e6%80%81%e8%a7%84%e5%88%92">#</a>
+</h3>
+<p>将一个问题拆成几个子问题，分别求解这些子问题，即可推断出大问题的解。</p>
+<p>如何判断一个问题能否使用DP解决呢？</p>
+<p>能将大问题拆成几个小问题，且满足无后效性、最优子结构性质。</p>
+<h3 id="28数组排序">
+  <strong>28、数组排序</strong>
+  <a class="anchor" href="#28%e6%95%b0%e7%bb%84%e6%8e%92%e5%ba%8f">#</a>
+</h3>
+<ol>
+<li>冒泡排序法：将数组中的相邻两个元素进行比较，将比较大（较小）的数通过两两比较移动到数组末尾（开始），执行一遍内层循环，确定一个最大（最小）的数，外层循环从数组末尾（开始）遍历到开始（末尾）.
+冒泡排序</li>
+<li>选择排序法：将要排序的数组分成两部分，一部分是从大到小已经排好序的，一部分是无序的，从无序的部分取出最小的放到已经排序的最后面。
+选择排序</li>
+<li>插入排序法：将要排序的数组分成两部分，每次从后面的部分取出索引最小的元素插入到前一部分的适当位置
+插入排序</li>
+<li>快速排序法：快速排序法号称是目前最优秀的算法之一，实现思路是，将一个数组的排序问题看成是两个小数组的排序问题，而每个小的数组又可以继续看成更小的两个数组，一直递归下去，直到数组长度大小最大为2。</li>
+</ol>
+<h3 id="29正态分布">
+  <strong>29、正态分布</strong>
+  <a class="anchor" href="#29%e6%ad%a3%e6%80%81%e5%88%86%e5%b8%83">#</a>
+</h3>
+<p>如果把数值变量资料编制频数表后绘制频数分布图（又称直方图，它用矩形面积表示数值变量资料的频数分布，每条直条的宽表示组距，直条的面积表示频数（或频率）大小，直条与直条之间不留空隙。），</p>
+<p>若频数分布呈现中间为最多，左右两侧基本对称，越靠近中间频数越多，离中间越远，频数越少，形成一个中间频数多，两侧频数逐渐减少且基本对称的分布，那一般认为该数值变量服从或近似服从数学上的正态分布。</p>
+<h3 id="30排序算法">
+  <strong>30、排序算法</strong>
+  <a class="anchor" href="#30%e6%8e%92%e5%ba%8f%e7%ae%97%e6%b3%95">#</a>
+</h3>
+<p>比较类排序：通过比较来决定元素间的相对次序，由于其时间复杂度不能突破O(nlogn)，因此也称为非线性时间比较类排序。</p>
+<p>非比较类排序：不通过比较来决定元素间的相对次序，它可以突破基于比较排序的时间下界，以线性时间运行，因此也称为线性时间非比较类排序。</p>
+<p><img src="/images/01.png" alt="" /></p>
+<h3 id="31二叉树">
+  <strong>31、二叉树</strong>
+  <a class="anchor" href="#31%e4%ba%8c%e5%8f%89%e6%a0%91">#</a>
+</h3>
+<p>二叉树是一种特殊的树，在二叉树中每个节点最多有两个子节点，一般称为左子节点和右子节点（或左孩子和右孩子），并且二叉树的子树有左右之分，其次序不能任意颠倒。</p>
+<h2 id="32红黑树">
+  <strong>32、红黑树</strong>
+  <a class="anchor" href="#32%e7%ba%a2%e9%bb%91%e6%a0%91">#</a>
+</h2>
+<p>R-B Tree，全称是Red-Black Tree，又称为“红黑树”，它一种特殊的二叉查找树。红黑树的每个节点上都有存储位表示节点的颜色，可以是红(Red)或黑(Black)。
+红黑树的特性:</p>
+<ol>
+<li>每个节点或者是黑色，或者是红色。</li>
+<li>根节点是黑色。</li>
+<li>每个叶子节点（NIL）是黑色。 [注意：这里叶子节点，是指为空(NIL或NULL)的叶子节点！]</li>
+<li>如果一个节点是红色的，则它的子节点必须是黑色的。</li>
+<li>从一个节点到该节点的子孙节点的所有路径上包含相同数目的黑节点。</li>
+</ol>
+<p>注意：</p>
+<ol>
+<li>特性(3)中的叶子节点，是只为空(NIL或null)的节点。</li>
+<li>特性(5)，确保没有一条路径会比其他路径长出俩倍。因而，红黑树是相对是自平衡的二叉树。</li>
+</ol>
+<h2 id="33平衡二叉树">
+  <strong>33、平衡二叉树</strong>
+  <a class="anchor" href="#33%e5%b9%b3%e8%a1%a1%e4%ba%8c%e5%8f%89%e6%a0%91">#</a>
+</h2>
+<p>每个节点的子树的高度差不超过1的二叉树</p>
+<h2 id="34散列">
+  <strong>34、散列</strong>
+  <a class="anchor" href="#34%e6%95%a3%e5%88%97">#</a>
+</h2>
+<p>散列就是利用一段存储空间存储数据（大小为Tablesize)，然后根据关键词可以生成一个数字，这个数字是在范围在0和Tablesize之间。这个将关键字映射到数字的办法叫做散列函数。其实散列就是一个线性表，只不过它的下标可以不是直接给出的，而是通过一个运算从关键字得出的。</p>
+<h2 id="35cdo-class-default-object">
+  <strong>35、CDO class default object</strong>
+  <a class="anchor" href="#35cdo-class-default-object">#</a>
+</h2>
+<p>UCLASS宏为UObject提供了一个描述其基于虚幻的类型的UCLASS的引用。每个UCLASS都维护一个名为“类默认对象”的对象，简称CDO。 CDO本质上是一个默认的“模板”对象，由类构造函数生成，之后未修改。可以为给定的Object实例检索UCLASS和CDO，尽管它们通常应该被认为是只读的。可以使用GetClass()函数随时访问Object实例的UCLASS。</p>
+<p>CDO是在引擎初始化时创建的，当引擎为每个类生成UClass对象时。每个UClass的实例都是在引擎初始化期间创建的，并被分配为该UClass的CDO。并且包含在反射系统中，如在编辑器可以操作类蓝图。Obj.cpp可以看到引擎CDO初始化创建。</p>
+<h2 id="36虚继承">
+  <strong>36、虚继承</strong>
+  <a class="anchor" href="#36%e8%99%9a%e7%bb%a7%e6%89%bf">#</a>
+</h2>
+<p>为了解决多继承时的命名冲突和冗余数据问题，使得在派生类中只保留一份间接基类的成员。在多重继承的问题上防止二义性的产生。</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#常见问题进行梳理带答案">常见问题进行梳理带答案</a>
+      <ul>
+        <li><a href="#1点乘叉乘意义"><strong>1、点乘叉乘意义</strong></a></li>
+        <li><a href="#2ue中正向是坐标系中的哪个轴"><strong>2、ue中，正向是坐标系中的哪个轴</strong></a></li>
+        <li><a href="#3在场景中创建actor的方法"><strong>3、在场景中创建actor的方法</strong></a></li>
+        <li><a href="#4向蓝图暴露变量的宏是哪个"><strong>4、向蓝图暴露变量的宏是哪个？</strong></a></li>
+        <li><a href="#5ue中如何创建uobject对象"><strong>5、ue中如何创建uobject对象</strong></a></li>
+        <li><a href="#6阐述下gamemode在ue框架中的意义"><strong>6、阐述下gamemode在ue框架中的意义</strong></a></li>
+        <li><a href="#7如何使用charactermovement飞行"><strong>7、如何使用charactermovement飞行？</strong></a></li>
+        <li><a href="#8fstringfnameftext的使用场景举例下"><strong>8、fstring,fname,ftext的使用场景举例下</strong></a></li>
+        <li><a href="#9cpp中动态库和静态库区别"><strong>9、cpp中动态库和静态库区别</strong></a></li>
+        <li><a href="#10cpp中指针是不是数据结构"><strong>10、cpp中指针是不是数据结构</strong></a></li>
+        <li><a href="#11cpp中定义常量使用宏还是const"><strong>11、cpp中定义常量使用宏还是const</strong></a></li>
+        <li><a href="#12简单阐述下你认为运算符重载的意义"><strong>12、简单阐述下你认为运算符重载的意义</strong></a></li>
+        <li><a href="#13阐述下设计模式中单例模式的意义"><strong>13、阐述下设计模式中单例模式的意义</strong></a></li>
+        <li><a href="#14说一说你使用过得版本控制工具描述下使用中的问题"><strong>14、说一说你使用过得版本控制工具，描述下使用中的问题</strong></a></li>
+        <li><a href="#15cpp中友元的优点和缺点"><strong>15、cpp中，友元的优点和缺点</strong></a></li>
+        <li><a href="#16面相对象的特性"><strong>16、面相对象的特性</strong></a></li>
+        <li><a href="#17面相对象的设计原则-六个"><strong>17、面相对象的设计原则 六个</strong></a></li>
+        <li><a href="#17阐述下智能指针的实现手段和意义"><strong>17、阐述下智能指针的实现手段和意义</strong></a></li>
+        <li><a href="#18说出你认识的设计模式阐述他们的特点不少于五个"><strong>18、说出你认识的设计模式，阐述他们的特点，不少于五个</strong></a></li>
+        <li><a href="#19针对接口编程的意义"><strong>19、针对接口编程的意义</strong></a></li>
+        <li><a href="#20数组指针和指针数组区别"><strong>20、数组指针和指针数组区别</strong></a></li>
+        <li><a href="#21指针数组加减一是否有意义为什么"><strong>21、指针数组加减一是否有意义？为什么？</strong></a></li>
+        <li><a href="#22阐述下二分查找法的时间复杂度是什么"><strong>22、阐述下二分查找法的时间复杂度是什么？</strong></a></li>
+        <li><a href="#23数据结构中栈和队列区别"><strong>23、数据结构中栈和队列区别</strong></a></li>
+        <li><a href="#24cpp中头文件的意义"><strong>24、cpp中头文件的意义</strong></a></li>
+        <li><a href="#25内联函数的意义"><strong>25、内联函数的意义</strong></a></li>
+        <li><a href="#26斐波那契数列"><strong>26、斐波那契数列</strong></a></li>
+        <li><a href="#27动态规划"><strong>27、动态规划</strong></a></li>
+        <li><a href="#28数组排序"><strong>28、数组排序</strong></a></li>
+        <li><a href="#29正态分布"><strong>29、正态分布</strong></a></li>
+        <li><a href="#30排序算法"><strong>30、排序算法</strong></a></li>
+        <li><a href="#31二叉树"><strong>31、二叉树</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#32红黑树"><strong>32、红黑树</strong></a></li>
+    <li><a href="#33平衡二叉树"><strong>33、平衡二叉树</strong></a></li>
+    <li><a href="#34散列"><strong>34、散列</strong></a></li>
+    <li><a href="#35cdo-class-default-object"><strong>35、CDO class default object</strong></a></li>
+    <li><a href="#36虚继承"><strong>36、虚继承</strong></a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

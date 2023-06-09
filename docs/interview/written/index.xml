@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>笔试题 on 虚幻引擎资料整理🏆</title>
+    <link>http://example.org/docs/interview/written/</link>
+    <description>Recent content in 笔试题 on 虚幻引擎资料整理🏆</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="http://example.org/docs/interview/written/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>某公司笔试（1）</title>
+      <link>http://example.org/docs/interview/written/dl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/interview/written/dl/</guid>
+      <description>笔试题操作题#注意
+下面试题为某虚拟仿真公司真实面试题，招聘岗位虚幻引擎开发工程师
+注意题目中内容不一定正确，需要重新整理
+收录时间：2022年8月10日</description>
+    </item>
+    
+    <item>
+      <title>某公司笔试（10）</title>
+      <link>http://example.org/docs/interview/written/nc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/interview/written/nc/</guid>
+      <description>请写出输出结果______(4 分) #include &amp;lt;stdio.h&amp;gt; union { int i; char x[2]; } void main() { a.x[0] = 10; a.x[1] = 1; printf(&amp;#34;%d&amp;#34;, a.i); } int Func(int，int); 不可与下列哪个函数构成重载 (______________)(4分) A.int Func(int, int, int); B.double Func(int, double); C.double Func(double, double); D.double Func(int, int); this 指针存在的目的是 () (4分) A.保证基类公有成员在子类中可以被访问 B.保证基类私有成员在子类中可以被访问 C.保证基类保护成员在子类中可以被访问 D.保证每个对象拥有自己的数据成员，但共享处理这些数据成员的代码 在哪种派生方式中，派生类可以访问基类中的 protected 成员 (_) (4 分) A.protected 和 private B.public 和private C.摞代ubli狡疤孩和 protected D.仅protected 以下两条输出语句分别输出什么? (8 分) float a = 1.0f; float b = 0.</description>
+    </item>
+    
+    <item>
+      <title>某公司笔试（2）</title>
+      <link>http://example.org/docs/interview/written/gamegou/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/interview/written/gamegou/</guid>
+      <description>北京游戏公司笔试题#注意
+北京某游戏公司招聘面试笔试题
+收录时间：2022年8月10日
+100 个小朋友围成一个圈，设定编号为 1~100，依次按 1、2、3、4、5、6、7、8、9 循 环报数，报到 9 的出圈，直到所有小朋友出圈。请写代码打印出各个小朋友出圈顺序，语言 不限
+商场新进了两种商品 A 和 B，现在有 A 和 B 商品的购买记录，例如 A=[1,2,2,3,4,5], B=[2,4,1,2,3]。1,2,3,4,5 为用户编号。现在需要求出购买过 A、B 两种商品的用户，语言不限。 （结果中的每个用户编号必须是唯一的）
+例：
+Input:
+1,2,2,3,4,5
+2,4,1,2,3
+output:
+1,2,3,4</description>
+    </item>
+    
+    <item>
+      <title>某公司笔试（3）</title>
+      <link>http://example.org/docs/interview/written/zy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/interview/written/zy/</guid>
+      <description>北京某公司笔试题#注意
+公司为北京游戏公司招聘虚幻引擎开发工程师
+注意题目中内容不一定正确，需要重新整理
+收录时间：2022年1月25日</description>
+    </item>
+    
+    <item>
+      <title>某公司笔试（4）</title>
+      <link>http://example.org/docs/interview/written/gx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/interview/written/gx/</guid>
+      <description>北京某公司笔试题#注意
+公司为某公司招聘C++开发工程师
+收录时间：2021年8月15日</description>
+    </item>
+    
+    <item>
+      <title>某公司笔试（5）</title>
+      <link>http://example.org/docs/interview/written/zl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/interview/written/zl/</guid>
+      <description>某游戏公司笔试题#注意
+游戏公司C++开发工程师
+答案仅供参考，需要自行校验对错
+收录时间：2021年8月15日</description>
+    </item>
+    
+    <item>
+      <title>某公司笔试（6）</title>
+      <link>http://example.org/docs/interview/written/yh/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/interview/written/yh/</guid>
+      <description>某游戏公司笔试题#注意
+游戏公司C++开发工程师
+答案仅供参考，需要自行校验对错</description>
+    </item>
+    
+    <item>
+      <title>某公司笔试（7）</title>
+      <link>http://example.org/docs/interview/written/hx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/interview/written/hx/</guid>
+      <description>UE4研发工程师笔试题(30min)#遍历删除一个 List 中的第偶数个元素.请写出伪代码 请简述字节流和字符流的区别和用途 单例类如何确保线程安全? 静态库和动态库有何区别? 请简述线程间进行数据传递的方法 请简述进程间进行数据传递的方法 请简述骨骼动画的概念 欧拉角的作用是什么?请简述欧拉角/四元数/旋转矩阵之间的关系和优劣 Unity默认是 y-up 坐标系，而UE4是z-up 的.给定UE4 中一个骨骼的欧拉角，如何转换到Unity 中? 您是否有在 UE4 中使用多线程的经验? 请简述功能和实现方式 UE4 的网络框架是如何同步的? 如何将 Camera 实时渲染图片并存本地文件? 请大略表述思路 和服务器通信时，你会依据哪些因素选取通信协议? 选用TCP/Http/Websocket 的场景分别是? </description>
+    </item>
+    
+    <item>
+      <title>某公司笔试（8）</title>
+      <link>http://example.org/docs/interview/written/rt/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/interview/written/rt/</guid>
+      <description>一、选择题（每题3分，10题，共30分）#某32位系统下，下面两个sizeof的结果分别是？（ A ） char str1[] = “http://www.nd.com.cn/”; sizeof（str1）; void Foo（char str2[100]） { sizeof（str2）; }; A. 4、4 B. 22、100 C. 22、4 D. 4、100 C++编译器区分重载函数的可能方式中，不能作为依据的是（D） A. 参数个数 B. 参数类型 C. 函数名 D. 函数返回值类型 设栈最大长度为3，入栈序列为1.2.3.4.5.6，则不可能得出栈序列是？（ D ） A．1.2.3.4.5.6 B．2.1.3.4.5.6 C．3.4.2.1.5.6 D．4.3.2.1.5.6 对于派生类的构造函数，在定义对象时构造函数的执行顺序为？1．成员对象的构造函数2．基类的构造函数3．派生类本身的构造函数（ D ） A．123 B．231 C．321 D．213 如何减少换页错误？（ B ） A. 进程倾向于占用CPU B. 访问局部性（locality of reference）满足进程要求 C. 进程倾向于占用I/O D. 使用基于最短剩余时间（shortest remaining time）的调度机制 foo.GetI（）的值是？（ C ） class Foo { public: Foo（int i） : m_i（i） {} Foo（） { Foo（1） } int GetI（void） { return m_i; } private: int m_i; }; Foo foo; A．0 B．-1 C．1 D．不可预知 下列程序的输出结果是？（ C ） int i = 8; switch（i） { case 9: i = i+1; default: i = i+1; case 10: i = i+1; case 11: i = i+1; } cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; endl; A．9 B．10 C．11 D．12 float a=2，b=4，h=3;以下C语言表达式与代数式计算结果不相符的是？（ B ） A.</description>
+    </item>
+    
+    <item>
+      <title>某公司笔试（9）</title>
+      <link>http://example.org/docs/interview/written/cpp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/interview/written/cpp/</guid>
+      <description>C++基础#一、选择题#在C++中，数组类型属于（） A.本数据类型 B.自定义数琳类型 C.类类型 D.结构体类型 若有语句:float array[3][5][7];则数组array 的元素个数为() A.3 B.5 C.7 D.105 关于析构函数，下面说法不正确的是() A.析构函数用来完成对象被删除前的一些清理工作 B.析构函数可以声明为重载函数 C.析构函数可以声明为虚函数 D.析构函数在对象的生存期即将结束时被系统自动调用 关于抽象类，下列说法不正确的是() A.抽象类不能实例化 B.带有虚函数的类称为抽象类 C.带有纯虚函数的类称为抽象类 D.抽象类的作用是为一个类族建立一个公共接口 下列对一维数组a的正确定义是() A.int n=5,a[n]; B.int a(5); C.const int n-5;int a[n]; D.int n;cin&amp;raquo;n;int a[n]; 下列数组定义语句中，不合法的是() A.int a[3]={0,1,2,3}; B.int a[]={0,1,2}; C.int a[3]={0,1,2}; D.int a[3]={0}; 己知int a[10]={0，1，2，3，4，5，6，7，8，9}和*p=a，则不能表示数组a中元素的式子是()。 A.*a B.*p C.a D.a[p-a] 已知char *a[]={&amp;ldquo;fortraan&amp;rdquo;, &amp;ldquo;basic&amp;rdquo;, &amp;ldquo;pascal&amp;rdquo;, &amp;ldquo;java&amp;rdquo;, &amp;ldquo;c++&amp;quot;}，则cout&amp;laquo;a[3]，的显示结果是（） A.basie B.paseal C.java D.javact+ 若用数组名作为调用函数的实参，则传递给形参的是() A.数组存储首地址 B.数组第一个元素的值 C.数组元素的个数 D.数组中全部元素的值 判字符串sl和s2是否相等的正确表达式是（） A.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>聊天服务器 on 虚幻引擎资料整理🏆</title>
+    <link>http://example.org/docs/chatserver/</link>
+    <description>Recent content in 聊天服务器 on 虚幻引擎资料整理🏆</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="http://example.org/docs/chatserver/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SCS服务器</title>
+      <link>http://example.org/docs/chatserver/scsproto/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/chatserver/scsproto/</guid>
+      <description>Simple Chat Server#文档说明
+目前适用版本1.0
+服务器基于C#完成设计
+协议文档只适用于SCS服务器
+说明#一款简单的基于UDP/IP协议完成的聊天通信服务器。不限定客户端类型，通信消息格式采用UTF-8纯文本，未做协议加密压缩等。
+协议消息均采用JSON格式，方便学习练习。
+服务器未作复杂校验，未做过多容错操作。可能存在BUG，测试中需要注意线程死锁，或是线程崩溃问题。关于线程调度已经进行优化，尽量保证不不出现线程锁问题。未适用线程池，故不适合超过100用户量链接。
+服务器通信协议采用HTTP和SOCKET，其中HTTP只是用POST
+关于公网部署，可根据自身网络环境进行调整，不做说明。
+协议名词#标记 说明 上行 表明从客户端向服务器端发送消息 下行 表明从服务器端向客户端发送消息 ID 每个协议都应该带有的字段，并且字段值在协议中唯一存在 通信类型 一般指Socket或是HTTP通信 协议结构#本服务器协议结构采用JSON方式通信，如更换协议结构可只替换协议层不用更换协议内容。
+JSON结构为外层对象型，内层字段
+{&amp;quot;id&amp;quot; : &amp;quot;&amp;quot;,...}协议表述（客户端上行）#消息通过HTTP的POST传递
+注册账号#字段 类型 说明 id int 1000 account string password string 服务器注册账号
+登录账号#字段 类型 说明 id int 1001 account string password string 服务器登录账号
+以下协议通过SOCKET通信
+校验换取TOKEN#当链接Chat服务器后，需要在1分钟内校验TOKEN并换取新的TOKEN，否则将会被踢下线。暂未增加IP访问冷静期限制。</description>
+    </item>
+    
+  </channel>
+</rss>
